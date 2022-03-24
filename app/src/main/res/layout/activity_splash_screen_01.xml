@@ -41,7 +41,7 @@
         android:id="@+id/img_splash_screen_01"
         android:layout_width="298dp"
         android:layout_height="295dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
