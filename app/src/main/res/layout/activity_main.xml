@@ -86,7 +86,7 @@
         android:onClick="splash_screen"
         android:text="Vamos lá!"
         android:textAlignment="center"
-        android:textColorLink="#FFFFFF"
+        android:textColor="#FFFFFF"
         app:background="@drawable/radius_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
