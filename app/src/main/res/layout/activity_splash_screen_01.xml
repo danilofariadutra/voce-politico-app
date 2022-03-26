@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_title_splash_screen_02"
+        android:id="@+id/text_title_splash_screen_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -45,7 +45,7 @@
         android:layout_marginTop="132dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_splash_screen_02"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_splash_screen_01"
         app:srcCompat="@drawable/ic_splash_img_01" />
 
     <ImageButton

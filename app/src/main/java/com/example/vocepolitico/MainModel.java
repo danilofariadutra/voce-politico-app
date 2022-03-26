@@ -1,6 +1,5 @@
 package com.example.vocepolitico;
 
-import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -8,24 +7,18 @@ import android.transition.TransitionManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
 
-import static com.example.vocepolitico.MainModel.initTransition;
-import static com.example.vocepolitico.R.layout.activity_splash_screen_01;
-
-public class MainActivity extends MainController {
-    ImageView btn_splash_screen_01;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(activity_splash_screen_01);
-        init();
-        initTransition();
-
+public class MainModel extends MainController {
+    public static void initTransition() {
+        // Cria a transicao para a primeira Splash Screen na onCreate
+        Transition transition;
+        transition = new AutoTransition();
+        transition.setDuration(2000);
+        transition.setInterpolator(new AnticipateInterpolator());
+        TransitionManager.go(scSplashScreen01, transition);
     }
 
-    public void splash_01_to_splash_screen_02(View view) {
+    public static void splash_01_to_splash_screen_02(View view) {
         Transition slide = new Slide(Gravity.LEFT);
         slide.setDuration(1750);
 

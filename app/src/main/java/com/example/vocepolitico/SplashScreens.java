@@ -48,28 +48,28 @@ public class SplashScreens extends AppCompatActivity {
 
     public void splash_01_to_splash_screen_02(View view) {
         Transition slide = new AutoTransition();
-        slide.setDuration(750);
+        slide.setDuration(2750);
 
         TransitionManager.go(scSplashScreen02, slide);
     }
 
     public void splash_screen_02_to_splash_screen_03(View view) {
         Transition slide = new AutoTransition();
-        slide.setDuration(750);
+        slide.setDuration(2750);
 
         TransitionManager.go(scSplashScreen03, slide);
     }
 
     public void splash_screen_03_to_main(View view) {
         Transition slide = new AutoTransition();
-        slide.setDuration(750);
+        slide.setDuration(2750);
 
         TransitionManager.go(scMainActivity, slide);
     }
 
     public void splash_screen(View view) {
         Transition slide = new AutoTransition();
-        slide.setDuration(1000);
+        slide.setDuration(2000);
 
         TransitionManager.go(scSplashScreen02, slide);
     }
