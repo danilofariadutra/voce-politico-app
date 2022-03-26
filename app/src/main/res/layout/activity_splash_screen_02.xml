@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/sc_splash_screen_02"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -37,18 +38,6 @@
         app:layout_constraintTop_toBottomOf="@+id/img_splash_screen_02"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageButton
-        android:id="@+id/btn_left_splash_screen_02"
-        android:layout_width="15dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/ic_button_left"
-        android:onClick="splash_screen_02"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider_splash_screen_02" />
-
     <ImageView
         android:id="@+id/img_splash_screen_02"
         android:layout_width="298dp"
@@ -65,7 +54,7 @@
         android:layout_height="18dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_button_right"
-        android:onClick="splash_screen_03"
+        android:onClick="splash_screen_02_to_splash_screen_03"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
