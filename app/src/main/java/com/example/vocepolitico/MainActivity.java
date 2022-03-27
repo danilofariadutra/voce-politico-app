@@ -1,7 +1,6 @@
 package com.example.vocepolitico;
 
 import android.os.Bundle;
-import android.text.Layout;
 import android.transition.AutoTransition;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -49,11 +48,10 @@ public class MainActivity extends MainController {
         transition = new AutoTransition();
         transition.setDuration(2500);
         transition.setInterpolator(new AnticipateInterpolator());
-        TransitionManager.go(scSplashScreen01, transition);
+        TransitionManager.go(scQuestionExplanation, transition);
     }
 
     public void initFirstTransition() {
-        // Cria a transicao para a primeira Splash Screen na onCreate
         Transition transition;
         transition = new AutoTransition();
         transition.setDuration(2000);

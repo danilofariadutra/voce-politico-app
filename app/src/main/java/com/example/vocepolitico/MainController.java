@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainController extends AppCompatActivity {
 
-    public static Scene scSplashScreen01, scSplashScreen02, scSplashScreen03, scMainActivity = null;
+    public static Scene scSplashScreen01, scSplashScreen02, scSplashScreen03, scMainActivity, scQuestionExplanation = null;
 
     public void setupAll() {
         setupTransitions();
@@ -21,5 +21,6 @@ public class MainController extends AppCompatActivity {
         scSplashScreen02 = Scene.getSceneForLayout(root, R.layout.activity_splash_screen_02, this);
         scSplashScreen03 = Scene.getSceneForLayout(root, R.layout.activity_splash_screen_03, this);
         scMainActivity = Scene.getSceneForLayout(root, R.layout.activity_main, this);
+        scQuestionExplanation = Scene.getSceneForLayout(root, R.layout.eight_values_explanation, this);
     }
 }
