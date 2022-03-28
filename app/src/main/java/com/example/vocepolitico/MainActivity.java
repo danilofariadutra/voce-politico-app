@@ -1,5 +1,6 @@
 package com.example.vocepolitico;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.Slide;
@@ -43,12 +44,9 @@ public class MainActivity extends MainController {
         TransitionManager.go(scMainActivity, transition);
     }
 
-    public void splash_screen (View view){
-        Transition transition;
-        transition = new AutoTransition();
-        transition.setDuration(2500);
-        transition.setInterpolator(new AnticipateInterpolator());
-        TransitionManager.go(scQuestionExplanation, transition);
+    public void go_to_explanation (View view){
+        Intent intent = new Intent(this, EightValuesExplanationOne.class);
+        startActivity(intent);
     }
 
     public void initFirstTransition() {

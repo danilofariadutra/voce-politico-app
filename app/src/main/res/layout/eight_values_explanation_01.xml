@@ -16,7 +16,7 @@
         android:text="O 8Values é um teste de coordenadas políticas, que indica a porcentagem para oito diferentes valores ideológicos"
         android:textAlignment="viewStart"
         android:textColor="#2A4EA4"
-        android:textSize="16dp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,12 +29,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="38dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="As afirmações correspondem a 5 valores,
-        que vão desde Concordo Fortemente a Discordo Fortemente,
-        \ncada resposta influenciará no resultado final"
+        android:text="As afirmações correspondem a 5 valores, que vão desde Concordo Fortemente a Discordo Fortemente, cada resposta influenciará no resultado final"
         android:textAlignment="viewStart"
         android:textColor="#2A4EA4"
-        android:textSize="16dp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_01" />
@@ -46,13 +44,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="38dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Ao final do questionário, suas respostas serão
-        comparadas com o máximo possível para cada
-        valor, resultando em uma porcentagem dentro de cada eixo ideológico.
-        \nResposta honestamente"
+        android:text="Ao final do questionário, suas respostas serão comparadas com o máximo possível para cada valor, resultando em uma porcentagem dentro de cada eixo ideológico. \nResposta honestamente"
         android:textAlignment="viewStart"
         android:textColor="#2A4EA4"
-        android:textSize="16dp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_02" />
@@ -67,19 +62,19 @@
         android:text="Você conhece o 8Values?"
         android:fontFamily="@font/poppins_bold"
         android:textColor="#1A1D1E"
-        android:textSize="26dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_vamos_la"
+        android:id="@+id/btn_eight_values_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/dark_1"
-        android:onClick="splash_screen"
+        android:onClick="explanation_01_to_explanation_02"
         android:text="Entendi"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -90,6 +85,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_"
-        app:layout_constraintVertical_bias="0.21" />
+        app:layout_constraintVertical_bias="0.21"
+        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
