@@ -1,6 +1,7 @@
 package com.example.vocepolitico;
 
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +14,20 @@ public class QuestionsPageController extends AppCompatActivity {
     public static TextView tv_dipl;
     public static TextView tv_govt;
     public static TextView tv_scty;
+    public static SeekBar seekbar_effect_multiply;
+    public static TextView textView;
+    public static Float seekbar_value;
+
+    public static String values;
+    public static String econ;
+    public static String dipl;
+    public static String govt;
+    public static String scty;
 
     public static Button btn_question;
+
+    public static float effect_seekbar_value = 0;
+    public static String user_opinion= "";
 
     public void setupAll() {
         tv_questions = findViewById(R.id.question);
@@ -23,5 +36,7 @@ public class QuestionsPageController extends AppCompatActivity {
         tv_dipl = findViewById(R.id.value_dipl);
         tv_govt = findViewById(R.id.value_govt);
         tv_scty = findViewById(R.id.value_scty);
+        seekbar_effect_multiply = findViewById(R.id.seekbar_effect);
+        textView = findViewById(R.id.teste);
     }
 }

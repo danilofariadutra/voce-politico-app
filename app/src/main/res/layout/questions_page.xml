@@ -19,6 +19,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <SeekBar
+        android:id="@+id/seekbar_effect"
+        android:layout_width="360dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="24dp"
+        android:max="4"
+        android:min="0"
+        android:progress="2"
+        android:progressDrawable="@drawable/ic_slider"
+        android:thumb="@drawable/ic_seekbar_thumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question" />
+
     <Button
         android:id="@+id/btn_questions"
         android:layout_width="243dp"
@@ -27,7 +42,7 @@
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbar_effect" />
 
     <TextView
         android:id="@+id/text_econ"
@@ -108,5 +123,15 @@
         android:text="Scty"
         app:layout_constraintStart_toEndOf="@+id/text_scty"
         app:layout_constraintTop_toBottomOf="@+id/value_govt" />
+
+    <TextView
+        android:id="@+id/teste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="120dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_questions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
