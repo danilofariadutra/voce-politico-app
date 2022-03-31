@@ -12,7 +12,9 @@
         android:layout_height="269dp"
         android:layout_marginTop="64dp"
         android:text=""
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
+        android:textColor="@color/dark_1"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,5 +28,85 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question" />
+
+    <TextView
+        android:id="@+id/text_econ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="32dp"
+        android:text="Econ"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_questions" />
+
+    <TextView
+        android:id="@+id/value_econ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Econ"
+        app:layout_constraintStart_toEndOf="@+id/text_econ"
+        app:layout_constraintTop_toBottomOf="@+id/btn_questions" />
+
+    <TextView
+        android:id="@+id/text_dipl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
+        android:text="Dipl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_econ" />
+
+    <TextView
+        android:id="@+id/value_dipl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Dipl"
+        app:layout_constraintStart_toEndOf="@+id/text_dipl"
+        app:layout_constraintTop_toBottomOf="@+id/value_econ" />
+
+    <TextView
+        android:id="@+id/text_govt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
+        android:text="Govt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_dipl" />
+
+    <TextView
+        android:id="@+id/value_govt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:text="Govt"
+        app:layout_constraintStart_toEndOf="@+id/text_govt"
+        app:layout_constraintTop_toBottomOf="@+id/value_dipl" />
+
+    <TextView
+        android:id="@+id/text_scty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
+        android:text="Scty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_govt" />
+
+    <TextView
+        android:id="@+id/value_scty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="8dp"
+        android:text="Scty"
+        app:layout_constraintStart_toEndOf="@+id/text_scty"
+        app:layout_constraintTop_toBottomOf="@+id/value_govt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
