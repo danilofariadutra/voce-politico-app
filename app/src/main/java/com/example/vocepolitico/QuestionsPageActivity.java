@@ -30,9 +30,8 @@ public class QuestionsPageActivity extends QuestionsPageController {
         seekbar_effect_multiply.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                effectMultiply((i));
-                String v = String.valueOf(effectMultiply(i));
-                seekbar_value = effectMultiply(i);
+                String v = String.valueOf(multiplyEffectValues(i));
+                seekbar_value = multiplyEffectValues(i);
                 textView.setText(v);
 
                 if (pos > 0) {
@@ -111,7 +110,6 @@ public class QuestionsPageActivity extends QuestionsPageController {
         govt = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
         scty = values.substring(values.indexOf("scty ") + 5);
 
-
         tv_questions.setText(" Question " + String.valueOf(pos + 1) + ": \n" + String.valueOf(questions_list.get(pos)));
 
         pos++;
@@ -122,7 +120,7 @@ public class QuestionsPageActivity extends QuestionsPageController {
         super.onPause();
     }
 
-    public float effectMultiply (Integer seekbar_value) {
+    public float multiplyEffectValues(Integer seekbar_value) {
                 switch (seekbar_value) {
                     case 0:
                         effect_seekbar_value = -1;

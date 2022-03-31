@@ -1,0 +1,634 @@
+{
+  "questions": [
+    {
+      "question": "A opressão por parte das corporações é um problema mais grave do que a opressão por parte dos governos.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": -5,
+        "scty": 0
+      }
+    },
+    {
+      "question": "É necessário que o governo intervenha na economia para proteger os consumidores.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Quanto mais livre é o mercado, mais livres são as pessoas.",
+      "effect": {
+        "econ": -10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "É melhor manter o orçamento em ordem do que garantir o bem-estar social para todos os cidadãos.",
+      "effect": {
+        "econ": -10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Pesquisas publicamente financiadas são um maior benefício a população do que deixá-las exclusivamente sob a administração do setor privado.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Taxação em produtos internacionais são importantes, pois encorajam a produção local.",
+      "effect": {
+        "econ": 5,
+        "dipl": 0,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "De cada qual, segundo sua capacidade; a cada qual, segundo suas necessidades.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Seria melhor se programas sociais fossem abolidos em favor da caridade privada.",
+      "effect": {
+        "econ": -10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Os impostos deveriam ser aumentados para os ricos, em benefício dos pobres.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A herança é uma forma legítima de riqueza.",
+      "effect": {
+        "econ": -10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": -5
+      }
+    },
+    {
+      "question": " Áreas e serviços de utilidade pública, como estradas e eletricidade, deveriam ser propriedade do Estado.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Uma intervenção excessiva do Estado no Mercado é um risco à economia.",
+      "effect": {
+        "econ": -10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Aqueles que podem pagar devem receber o melhor acesso à saúde.",
+      "effect": {
+        "econ": -10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A educação de qualidade é um direito de todos.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 5
+      }
+    },
+    {
+      "question": "Os meios de produção deveriam pertencer aos trabalhadores que os utilizam.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A ONU (Organização das Nações Unidas) deveria ser abolida.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": -5,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A ação militar preventiva por parte de nossa nação é por vezes necessária para protegê-la.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Eu apoio ligas regionais de países, como a União Europeia.",
+      "effect": {
+        "econ": -5,
+        "dipl": 10,
+        "govt": 10,
+        "scty": 5
+      }
+    },
+    {
+      "question": "É muito importante manter a nossa soberania nacional.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": -5,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Um mundo unido com agendas mútuas seria algo benéfico para a humanidade.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "É mais importante manter relações pacíficas com os demais países do que aumentar a nossa força militar.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Nossas guerras não precisam ser justificadas aos demais países.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Despesas militares são um desperdício de dinheiro.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "O apoio financeiro aos países necessitados é um desperdício de dinheiro.",
+      "effect": {
+        "econ": -5,
+        "dipl": -10,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Considero minha nação grandiosa.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Pesquisas científicas deveriam ser conduzidas em escala e cooperação global.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Governos deveriam ser responsáveis pela comunidade internacional.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 5,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Mesmo ao protestar contra um governo autoritário, a violência não é aceitável.",
+      "effect": {
+        "econ": 0,
+        "dipl": 5,
+        "govt": -5,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Meus valores religiosos precisam ser disseminados tanto quanto for possível.",
+      "effect": {
+        "econ": 0,
+        "dipl": -5,
+        "govt": -10,
+        "scty": -10
+      }
+    },
+    {
+      "question": "Os valores tradicionais da nossa nação precisam ser disseminados tanto for quanto possível.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": -5,
+        "scty": 0
+      }
+    },
+    {
+      "question": "É muito importante a manutenção da lei e da ordem.",
+      "effect": {
+        "econ": 0,
+        "dipl": -5,
+        "govt": -10,
+        "scty": -5
+      }
+    },
+    {
+      "question": "A população em geral toma decisões ruins.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Eutanásia deveria ser legalizada.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "O sacrifício de algumas liberdades civis é necessário para nos proteger de atos terroristas.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A vigilância governamental é necessária no mundo moderno.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A prória existência do Estado é uma ameaça à nossa liberdade.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Independentemente das suas opiniões políticas, é importante ficar ao lado do seu país em momentos de necessidade.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": -10,
+        "scty": -5
+      }
+    },
+    {
+      "question": "Nenhuma autoridade deve ser mantida livre de questionamentos.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 10,
+        "scty": 5
+      }
+    },
+    {
+      "question": "Um Estado hierárquico é o melhor caminho para a manutenção da ordem.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "É importante que o governo siga a opinião da maioria, ainda que ela possa estar errada.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Quanto mais forte o líder for, melhor para a nação.",
+      "effect": {
+        "econ": 0,
+        "dipl": -10,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A democracia é mais do que um mero processo de tomada de decisões.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Regulações ambientais são essenciais para o mundo.",
+      "effect": {
+        "econ": 5,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Um mundo melhor surgirá do avanço da automação, da ciência e da tecnologia.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Crianças devem ser educadas com valores religiosos ou tradicionais.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -5,
+        "scty": -10
+      }
+    },
+    {
+      "question": "As tradições não possuem valor por si mesmas.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "A religião deveria ter influência no governo.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": -10
+      }
+    },
+    {
+      "question": "Igrejas deveriam ser taxadas da mesma forma que outras instituições.",
+      "effect": {
+        "econ": 5,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "A mudança climática é atualmente uma das maiores ameaças ao nosso estilo de vida.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "É importante trabalharmos conjuntamente, de forma global, para combatermos as mudanças climáticas.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Nossa sociedade era melhor e mais segura há décadas atrás.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": -10
+      }
+    },
+    {
+      "question": "É importante preservar as tradições do nosso passado.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": -10
+      }
+    },
+    {
+      "question": "É importante pensarmos a longo prazo, para além da nossa geração.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Seguir nossa razão e os novos rumos dos avanços científicos é algo mais importante do que preservar nossa cultura.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "O uso de drogas deveria ser legalizado ou descriminalizado.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 10,
+        "scty": 2
+      }
+    },
+    {
+      "question": "O casamento civil entre pessoas do mesmo sexo deveria ser legal.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 10,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Nenhuma cultura é superior a outra.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 5,
+        "scty": 10
+      }
+    },
+    {
+      "question": "O sexo fora do casamento é algo imoral.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -5,
+        "scty": -10
+      }
+    },
+    {
+      "question": "Se aceitarmos imigrantes, é importante que eles se assimilem a nossa cultura.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -5,
+        "scty": -10
+      }
+    },
+    {
+      "question": "O aborto deveria ser proibido em todos os casos, ou em sua grande maioria.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": -10
+      }
+    },
+    {
+      "question": "A posse de armas deve ser proibida para quem não tenha uma razão válida para isso.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Eu apoio um sistema único e universal de saúde.",
+      "effect": {
+        "econ": 10,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "A prostituição deveria ser ilegal.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": -10,
+        "scty": -10
+      }
+    },
+    {
+      "question": "A manutenção dos valores familiares é algo essencial para a nossa sociedade.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": -10
+      }
+    },
+    {
+      "question": "Perseguir o progresso a qualquer custo é algo perigoso.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": -10
+      }
+    },
+    {
+      "question": "As pesquisas e práticas de alteração genética são algo que beneficia a humanidade, mesmo quando a genética humana está envolvida.",
+      "effect": {
+        "econ": 0,
+        "dipl": 0,
+        "govt": 0,
+        "scty": 10
+      }
+    },
+    {
+      "question": "Nós devemos manter nossas fronteiras abertas para os imigrantes em geral.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 10,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Os governos deveriam estar tão preocupados com a situação social dos cidadãos estrangeiros quanto com os que nasceram em seu país.",
+      "effect": {
+        "econ": 0,
+        "dipl": 10,
+        "govt": 0,
+        "scty": 0
+      }
+    },
+    {
+      "question": "Todas as pessoas - independentemente de fatores como cultura ou sexualidade - devem ser tratadas igualmente.",
+      "effect": {
+        "econ": 10,
+        "dipl": 10,
+        "govt": 10,
+        "scty": 10
+      }
+    },
+    {
+      "question": "É importante que coloquemos os interesses do nosso grupo ideológico acima de todos os demais.",
+      "effect": {
+        "econ": -10,
+        "dipl": -10,
+        "govt": -10,
+        "scty": -10
+      }
+    }
+  ]
+}
