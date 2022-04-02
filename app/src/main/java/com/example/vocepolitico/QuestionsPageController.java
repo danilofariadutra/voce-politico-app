@@ -8,14 +8,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class QuestionsPageController extends AppCompatActivity {
+    public int pos_question = 0;
 
     public static TextView tv_questions;
     public static TextView tv_econ;
     public static TextView tv_dipl;
     public static TextView tv_govt;
     public static TextView tv_scty;
-    public static SeekBar seekbar_effect_multiply;
+    public static TextView question_position;
     public static TextView textView;
+    public static SeekBar seekbar_effect_multiply;
     public static Float seekbar_value;
 
     public static String values;
@@ -30,6 +32,7 @@ public class QuestionsPageController extends AppCompatActivity {
     public static String user_opinion= "";
 
     public void setupAll() {
+        question_position = findViewById(R.id.question_position);
         tv_questions = findViewById(R.id.question);
         btn_question = findViewById(R.id.btn_questions);
         tv_econ = findViewById(R.id.value_econ);

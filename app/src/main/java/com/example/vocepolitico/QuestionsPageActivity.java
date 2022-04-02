@@ -1,8 +1,10 @@
 package com.example.vocepolitico;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,12 +15,27 @@ import java.util.ArrayList;
 import static com.example.vocepolitico.R.layout.questions_page;
 
 public class QuestionsPageActivity extends QuestionsPageController {
-    public int pos = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(questions_page);
-        setupAll();
+        setupAll(); // Configura os objetos do Controller
+
+        if (pos_question == 0) {
+            question_position.setText("Questão 0" + String.valueOf(pos_question + 1) + " de 70");
+            seekbar_value = multiplyEffectValues(seekbar_effect_multiply.getProgress());
+            getQuestions();
+
+            try {
+                tv_econ.setText(String.valueOf(Float.parseFloat(econ) * seekbar_value));
+                tv_dipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbar_value));
+                tv_govt.setText(String.valueOf(Float.parseFloat(govt) * seekbar_value));
+                tv_scty.setText(String.valueOf(Float.parseFloat(scty) * seekbar_value));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
 
         btn_question.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,13 +51,12 @@ public class QuestionsPageActivity extends QuestionsPageController {
                 seekbar_value = multiplyEffectValues(i);
                 textView.setText(v);
 
-                if (pos > 0) {
+                if (pos_question > 0) {
                     tv_econ.setText(String.valueOf(Float.parseFloat(econ) * seekbar_value));
                     tv_dipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbar_value));
                     tv_govt.setText(String.valueOf(Float.parseFloat(govt) * seekbar_value));
                     tv_scty.setText(String.valueOf(Float.parseFloat(scty) * seekbar_value));
                 }
-
             }
 
             @Override
@@ -56,6 +72,8 @@ public class QuestionsPageActivity extends QuestionsPageController {
     }
 
     public void getQuestions()  {
+       if (pos_question > 3) Toast.makeText(this, "Acabou", Toast.LENGTH_LONG);
+
         // Objeto das questoes
         ArrayList<String> questions_list = new ArrayList<>();
         String question_string = "";
@@ -101,18 +119,25 @@ public class QuestionsPageActivity extends QuestionsPageController {
         }
 
         // Teste para nao quebrar o app (Nao excede o tamanho da lista)
-        if (pos == effect_list.size()) pos = 0;
+        if (pos_question == effect_list.size()) pos_question = 0;
 
-//        if (String.valueOf(questions.get(pos)).contains("econ")) {
-        values = effect_list.get(pos).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
+        values = effect_list.get(pos_question).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
         econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
         dipl = values.substring(values.indexOf("dipl ") + 5, values.indexOf(",", values.indexOf("dipl ")));
         govt = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
         scty = values.substring(values.indexOf("scty ") + 5);
+        Log.i("Values: ", String.valueOf(values));
 
-        tv_questions.setText(" Question " + String.valueOf(pos + 1) + ": \n" + String.valueOf(questions_list.get(pos)));
+        tv_questions.setText(questions_list.get(pos_question));
+        if (pos_question < 9) {
+            question_position.setText("Questão 0" + String.valueOf(pos_question + 1) + " de 70");
+        } else {
+            question_position.setText("Questão " + String.valueOf(pos_question + 1) + " de 70");
+        }
 
-        pos++;
+        ++ pos_question;
+        Log.i("Info: ", String.valueOf(pos_question));
+        seekbar_effect_multiply.setProgress(2);
     }
 
     @Override
