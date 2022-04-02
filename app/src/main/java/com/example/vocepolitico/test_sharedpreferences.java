@@ -17,7 +17,7 @@ public class test_sharedpreferences extends AppCompatActivity {
     public static EditText editText;
     public static Button button;
     public static String string;
-    public static String textview_string;
+    public static String textviewString;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -33,13 +33,12 @@ public class test_sharedpreferences extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("PREFERENCIAS", MODE_PRIVATE);
 
-        textview_string = sharedPreferences.getString("textsaved", "");
+        textviewString = sharedPreferences.getString("textsaved", "");
 
         // Se algum dado já estiver gravado
-//        if (textview_string != "") Toast.makeText(this, textview_string, Toast.LENGTH_SHORT).show();
-        if (textview_string != "") {
-            textView.setText(textview_string);
-            Toast.makeText(this, textview_string, Toast.LENGTH_SHORT).show();
+        if (textviewString != "") {
+            textView.setText(textviewString);
+            Toast.makeText(this, textviewString, Toast.LENGTH_SHORT).show();
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +49,7 @@ public class test_sharedpreferences extends AppCompatActivity {
                 editor.putString("textsaved", string);
                 editor.commit();
 
-
+                // Checa com o commit, se os dados foram gravados com sucesso
                 if (sharedPreferences.edit().commit())
                     Toast.makeText(test_sharedpreferences.this, "Dados gravados com sucesso!", Toast.LENGTH_SHORT).show();
             }

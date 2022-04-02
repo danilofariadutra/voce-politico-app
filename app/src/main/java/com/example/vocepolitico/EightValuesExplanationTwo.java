@@ -10,7 +10,7 @@ import static com.example.vocepolitico.R.layout.eight_values_explanation_02;
 
 public class EightValuesExplanationTwo extends AppCompatActivity {
 
-    SeekBar seekBar;
+    SeekBar seekBarExample;
     TextView choice;
 
     @Override
@@ -18,10 +18,10 @@ public class EightValuesExplanationTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(eight_values_explanation_02);
 
-        seekBar = findViewById(R.id.barra_escolha);
+        seekBarExample = findViewById(R.id.seekbar_example);
         choice = findViewById(R.id.text_choice);
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekBarExample.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 float value = 0;

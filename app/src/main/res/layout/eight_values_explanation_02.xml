@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barra_escolha" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbar_example" />
 
     <TextView
         android:id="@+id/text_choice"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toEndOf="@+id/text_example"
-        app:layout_constraintTop_toBottomOf="@+id/barra_escolha" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbar_example" />
 
     <TextView
         android:id="@+id/eight_values_02_text_discordo"
@@ -82,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barra_escolha" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbar_example" />
 
     <TextView
         android:id="@+id/eight_values_02_text_concordo"
@@ -95,13 +95,13 @@
         android:textAlignment="viewStart"
         android:textColor="#1A1D1E"
         android:textSize="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/barra_escolha"
+        app:layout_constraintBottom_toTopOf="@+id/seekbar_example"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <SeekBar
-        android:id="@+id/barra_escolha"
+        android:id="@+id/seekbar_example"
         android:layout_width="360dp"
         android:layout_height="15dp"
         android:max="4"

@@ -21,41 +21,41 @@ public class QuestionsPageActivity extends QuestionsPageController {
         setContentView(questions_page);
         setupAll(); // Configura os objetos do Controller
 
-        if (pos_question == 0) {
-            question_position.setText("Questão 0" + String.valueOf(pos_question + 1) + " de 70");
-            seekbar_value = multiplyEffectValues(seekbar_effect_multiply.getProgress());
+        if (posQuestion == 0) {
+            questionPosition.setText("Questão 0" + String.valueOf(posQuestion + 1) + " de 70");
+            seekbarValue = multiplyEffectValues(seekbarEffectMultiply.getProgress());
             getQuestions();
 
             try {
-                tv_econ.setText(String.valueOf(Float.parseFloat(econ) * seekbar_value));
-                tv_dipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbar_value));
-                tv_govt.setText(String.valueOf(Float.parseFloat(govt) * seekbar_value));
-                tv_scty.setText(String.valueOf(Float.parseFloat(scty) * seekbar_value));
+                tvEcon.setText(String.valueOf(Float.parseFloat(econ) * seekbarValue));
+                tvDipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbarValue));
+                tvGovt.setText(String.valueOf(Float.parseFloat(govt) * seekbarValue));
+                tvScty.setText(String.valueOf(Float.parseFloat(scty) * seekbarValue));
             } catch (NumberFormatException e) {
                 e.printStackTrace();
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
 
-        btn_question.setOnClickListener(new View.OnClickListener() {
+        btnQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getQuestions();
             }
         });
 
-        seekbar_effect_multiply.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekbarEffectMultiply.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 String v = String.valueOf(multiplyEffectValues(i));
-                seekbar_value = multiplyEffectValues(i);
+                seekbarValue = multiplyEffectValues(i);
                 textView.setText(v);
 
-                if (pos_question > 0) {
-                    tv_econ.setText(String.valueOf(Float.parseFloat(econ) * seekbar_value));
-                    tv_dipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbar_value));
-                    tv_govt.setText(String.valueOf(Float.parseFloat(govt) * seekbar_value));
-                    tv_scty.setText(String.valueOf(Float.parseFloat(scty) * seekbar_value));
+                if (posQuestion > 0) {
+                    tvEcon.setText(String.valueOf(Float.parseFloat(econ) * seekbarValue));
+                    tvDipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbarValue));
+                    tvGovt.setText(String.valueOf(Float.parseFloat(govt) * seekbarValue));
+                    tvScty.setText(String.valueOf(Float.parseFloat(scty) * seekbarValue));
                 }
             }
 
@@ -72,7 +72,7 @@ public class QuestionsPageActivity extends QuestionsPageController {
     }
 
     public void getQuestions()  {
-       if (pos_question > 3) Toast.makeText(this, "Acabou", Toast.LENGTH_LONG);
+       if (posQuestion > 3) Toast.makeText(this, "Acabou", Toast.LENGTH_LONG);
 
         // Objeto das questoes
         ArrayList<String> questions_list = new ArrayList<>();
@@ -119,25 +119,25 @@ public class QuestionsPageActivity extends QuestionsPageController {
         }
 
         // Teste para nao quebrar o app (Nao excede o tamanho da lista)
-        if (pos_question == effect_list.size()) pos_question = 0;
+        if (posQuestion == effect_list.size()) posQuestion = 0;
 
-        values = effect_list.get(pos_question).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
+        values = effect_list.get(posQuestion).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
         econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
         dipl = values.substring(values.indexOf("dipl ") + 5, values.indexOf(",", values.indexOf("dipl ")));
         govt = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
         scty = values.substring(values.indexOf("scty ") + 5);
         Log.i("Values: ", String.valueOf(values));
 
-        tv_questions.setText(questions_list.get(pos_question));
-        if (pos_question < 9) {
-            question_position.setText("Questão 0" + String.valueOf(pos_question + 1) + " de 70");
+        tvQuestions.setText(questions_list.get(posQuestion));
+        if (posQuestion < 9) {
+            questionPosition.setText("Questão 0" + String.valueOf(posQuestion + 1) + " de 70");
         } else {
-            question_position.setText("Questão " + String.valueOf(pos_question + 1) + " de 70");
+            questionPosition.setText("Questão " + String.valueOf(posQuestion + 1) + " de 70");
         }
 
-        ++ pos_question;
-        Log.i("Info: ", String.valueOf(pos_question));
-        seekbar_effect_multiply.setProgress(2);
+        ++posQuestion;
+        Log.i("Info: ", String.valueOf(posQuestion));
+        seekbarEffectMultiply.setProgress(2);
     }
 
     @Override
@@ -148,28 +148,28 @@ public class QuestionsPageActivity extends QuestionsPageController {
     public float multiplyEffectValues(Integer seekbar_value) {
                 switch (seekbar_value) {
                     case 0:
-                        effect_seekbar_value = -1;
-                        user_opinion = "Discordo Fortemente";
+                        effectSeekbarValue = -1;
+                        userOpinion = "Discordo Fortemente";
                         break;
                     case 1:
-                        effect_seekbar_value = (float) -0.5;
-                        user_opinion = "Discordo";
+                        effectSeekbarValue = (float) -0.5;
+                        userOpinion = "Discordo";
                         break;
                     case 2:
-                        effect_seekbar_value = 0;
-                        user_opinion = "Neutro";
+                        effectSeekbarValue = 0;
+                        userOpinion = "Neutro";
                         break;
                     case 3:
-                        effect_seekbar_value = (float) 0.5;
-                        user_opinion = "Concordo";
+                        effectSeekbarValue = (float) 0.5;
+                        userOpinion = "Concordo";
                         break;
                     case 4:
-                        effect_seekbar_value = 1;
-                        user_opinion = "Concordo Fortemente";
+                        effectSeekbarValue = 1;
+                        userOpinion = "Concordo Fortemente";
                         break;
                 }
 
-        return effect_seekbar_value;
+        return effectSeekbarValue;
     }
 }
 
