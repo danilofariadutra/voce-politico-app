@@ -32,14 +32,14 @@ public class QuestionsPageController extends AppCompatActivity {
     public static String user_opinion= "";
 
     public void setupAll() {
-        question_position = findViewById(R.id.question_position);
-        tv_questions = findViewById(R.id.question);
-        btn_question = findViewById(R.id.btn_questions);
+        question_position = findViewById(R.id.question_info);
+        tv_questions = findViewById(R.id.question_box);
+        btn_question = findViewById(R.id.btn_next_question);
         tv_econ = findViewById(R.id.value_econ);
         tv_dipl = findViewById(R.id.value_dipl);
         tv_govt = findViewById(R.id.value_govt);
         tv_scty = findViewById(R.id.value_scty);
-        seekbar_effect_multiply = findViewById(R.id.seekbar_effect);
+        seekbar_effect_multiply = findViewById(R.id.seekbar_choice);
         textView = findViewById(R.id.teste);
     }
 }
