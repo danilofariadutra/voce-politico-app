@@ -166,6 +166,8 @@ public class QuestionsPageActivity extends QuestionsPageController {
             getEffectResult(userEffectValues);
         }
 
+        Toast.makeText(this, String.valueOf(0 == -0), Toast.LENGTH_SHORT).show();
+
         seekbarEffectMultiply.setProgress(2);
     }
 
