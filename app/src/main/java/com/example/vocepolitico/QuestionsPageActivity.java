@@ -139,51 +139,34 @@ public class QuestionsPageActivity extends QuestionsPageController {
         }
 
         // Teste para nao quebrar o app (Nao excede o tamanho da lista)
-//        Log.i("PosQuestion A", String.valueOf(posQuestion));
         if (posQuestion == effect_list.size()) posQuestion = 0;
         values = effect_list.get(posQuestion).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
-//        Log.i("Valores", values);
-//        Log.i("Questão", questions_list.get(posQuestion));
 
-
-         econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
+        econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
         dipl = values.substring(values.indexOf("dipl ") + 5, values.indexOf(",", values.indexOf("dipl ")));
         govt = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
         scty = values.substring(values.indexOf("scty ") + 5);
-//        Log.i("Values: ", String.valueOf(values + 1));
-
-//        Log.i("Array String: ", (userEffectValues.get(posQuestion)));
-
-
         tvQuestions.setText(questions_list.get(posQuestion));
+
         if (posQuestion < 9) {
             questionPosition.setText("Questão 0" + String.valueOf(posQuestion + 1) + " de 70");
         } else {
             questionPosition.setText("Questão " + String.valueOf(posQuestion + 1) + " de 70");
         }
 
-//        userEffectValues.add(econ, dipl, govt, scty);
-//        String n = econ + ", " + dipl + ", " + govt + ", " + scty;
-
-//        Log.i("seekbarValue: ", String.valueOf(seekbarValue));
-//        Log.i("Values", values);
         ArrayList<Float> floats = new ArrayList<Float>();
-//        Log.i("SeekBarValue", String.valueOf(seekbarValue));
-        if (seekbarEffectMultiply.getProgress() == 2) seekbarValue = 1f;
 
+        // Verifica quando na primeira vez o getProgress vem zerado
+        if (seekbarEffectMultiply.getProgress() == 2) seekbarValue = 0f;
+
+        // Grava as escolhas somente apos onCreate
         if (didCreate == false) {
             floats.addAll(Arrays.asList(parseFloat(econ) * seekbarValue, parseFloat(dipl) * seekbarValue, parseFloat(govt) * seekbarValue, parseFloat(scty) * seekbarValue));
-            String floatsWithoutMultiply = "econ " + econ + " dipl " + dipl + " govt " + govt + " scty " + scty;
-//        Log.i("Floats: ", String.valueOf(floats));
-//        Log.i("Values Without Multiply", floatsWithoutMultiply);
-//        userEffectValues.addAll(Arrays.asList(Float.parseFloat(econ), Float.parseFloat(dipl), Float.parseFloat(govt), Float.parseFloat(scty)));
             userEffectValues.addAll(Arrays.asList(floats));
             getEffectResult(userEffectValues);
         }
 
-//        Log.i("Parse Float pos: " + String.valueOf(posQuestion), String.valueOf(userEffectValues.get(posQuestion)));
         seekbarEffectMultiply.setProgress(2);
-//        floats.clear();
     }
 
     @Override
