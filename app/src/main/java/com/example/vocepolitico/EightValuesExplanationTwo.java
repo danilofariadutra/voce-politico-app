@@ -1,6 +1,8 @@
 package com.example.vocepolitico;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -63,5 +65,10 @@ public class EightValuesExplanationTwo extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void goToTest(View view) {
+        Intent intent = new Intent(this, QuestionsPageActivity.class);
+        startActivity(intent);
     }
 }

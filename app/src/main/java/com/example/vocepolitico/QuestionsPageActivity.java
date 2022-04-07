@@ -11,36 +11,43 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.example.vocepolitico.R.layout.questions_page;
+import static java.lang.Float.parseFloat;
 
 public class QuestionsPageActivity extends QuestionsPageController {
+    private Boolean didCreate = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(questions_page);
+        didCreate = true;
+//        setupUI(); // Configura a Content
         setupAll(); // Configura os objetos do Controller
+        getQuestions(posQuestion);
+//        posQuestion ++;
 
-        if (posQuestion == 0) {
-            questionPosition.setText("Questão 0" + String.valueOf(posQuestion + 1) + " de 70");
-            seekbarValue = multiplyEffectValues(seekbarEffectMultiply.getProgress());
-            getQuestions();
-
-            try {
-                tvEcon.setText(String.valueOf(Float.parseFloat(econ) * seekbarValue));
-                tvDipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbarValue));
-                tvGovt.setText(String.valueOf(Float.parseFloat(govt) * seekbarValue));
-                tvScty.setText(String.valueOf(Float.parseFloat(scty) * seekbarValue));
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if (posQuestion == 0) {
+//            questionPosition.setText("Questão 0" + String.valueOf(posQuestion + 1) + " de 70");
+//            seekbarValue = multiplyEffectValues(seekbarEffectMultiply.getProgress());
+//
+//            try {
+//                tvEcon.setText(String.valueOf(parseFloat( econ) * seekbarValue));
+//                tvDipl.setText(String.valueOf(parseFloat(dipl) * seekbarValue));
+//                tvGovt.setText(String.valueOf(parseFloat(govt) * seekbarValue));
+//                tvScty.setText(String.valueOf(parseFloat(scty) * seekbarValue));
+//            } catch (NumberFormatException e) {
+//                e.printStackTrace();
+//                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        }
 
         btnQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getQuestions();
+                didCreate = false;
+                getQuestions(posQuestion);
             }
         });
 
@@ -50,13 +57,24 @@ public class QuestionsPageActivity extends QuestionsPageController {
                 String v = String.valueOf(multiplyEffectValues(i));
                 seekbarValue = multiplyEffectValues(i);
                 textView.setText(v);
+                Toast.makeText(QuestionsPageActivity.this, String.valueOf(posQuestion), Toast.LENGTH_SHORT).show();
+//                Log.i("Valores", values);
+//                Log.i("Multiply", String.valueOf(parseFloat( econ) * seekbarValue) + " " + String.valueOf(parseFloat(dipl) * seekbarValue) + " " + String.valueOf(parseFloat(govt) * seekbarValue) + " " + String.valueOf(parseFloat(scty) * seekbarValue));
+//                Log.i("posQuestion", String.valueOf(posQuestion));
+//                if (userEffectValues.size() > 0) {
+//                    Log.i("Array", String.valueOf(userEffectValues.get(posQuestion)));
+//                }
+//                Log.i("userEffectValues.size", String.valueOf(userEffectValues.size()));
+                Toast.makeText(QuestionsPageActivity.this, String.valueOf(didCreate), Toast.LENGTH_SHORT).show();
+//                if (didCreate) didCreate = false;
 
-                if (posQuestion > 0) {
-                    tvEcon.setText(String.valueOf(Float.parseFloat(econ) * seekbarValue));
-                    tvDipl.setText(String.valueOf(Float.parseFloat(dipl) * seekbarValue));
-                    tvGovt.setText(String.valueOf(Float.parseFloat(govt) * seekbarValue));
-                    tvScty.setText(String.valueOf(Float.parseFloat(scty) * seekbarValue));
-                }
+
+//                if (posQuestion > 0) {
+                    tvEcon.setText(String.valueOf(parseFloat( econ) * seekbarValue));
+                    tvDipl.setText(String.valueOf(parseFloat(dipl) * seekbarValue));
+                    tvGovt.setText(String.valueOf(parseFloat(govt) * seekbarValue));
+                    tvScty.setText(String.valueOf(parseFloat(scty) * seekbarValue));
+//                }
             }
 
             @Override
@@ -71,8 +89,10 @@ public class QuestionsPageActivity extends QuestionsPageController {
         });
     }
 
-    public void getQuestions()  {
-       if (posQuestion > 3) Toast.makeText(this, "Acabou", Toast.LENGTH_LONG);
+    public void getQuestions(Integer posQuestion)  {
+        Toast.makeText(this, String.valueOf(posQuestion), Toast.LENGTH_SHORT).show();
+
+//        if (posQuestion > 3) Toast.makeText(this, "Acabou", Toast.LENGTH_LONG).show();
 
         // Objeto das questoes
         ArrayList<String> questions_list = new ArrayList<>();
@@ -119,14 +139,21 @@ public class QuestionsPageActivity extends QuestionsPageController {
         }
 
         // Teste para nao quebrar o app (Nao excede o tamanho da lista)
+//        Log.i("PosQuestion A", String.valueOf(posQuestion));
         if (posQuestion == effect_list.size()) posQuestion = 0;
-
         values = effect_list.get(posQuestion).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
-        econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
+//        Log.i("Valores", values);
+//        Log.i("Questão", questions_list.get(posQuestion));
+
+
+         econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
         dipl = values.substring(values.indexOf("dipl ") + 5, values.indexOf(",", values.indexOf("dipl ")));
         govt = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
         scty = values.substring(values.indexOf("scty ") + 5);
-        Log.i("Values: ", String.valueOf(values));
+//        Log.i("Values: ", String.valueOf(values + 1));
+
+//        Log.i("Array String: ", (userEffectValues.get(posQuestion)));
+
 
         tvQuestions.setText(questions_list.get(posQuestion));
         if (posQuestion < 9) {
@@ -135,9 +162,28 @@ public class QuestionsPageActivity extends QuestionsPageController {
             questionPosition.setText("Questão " + String.valueOf(posQuestion + 1) + " de 70");
         }
 
-        ++posQuestion;
-        Log.i("Info: ", String.valueOf(posQuestion));
+//        userEffectValues.add(econ, dipl, govt, scty);
+//        String n = econ + ", " + dipl + ", " + govt + ", " + scty;
+
+//        Log.i("seekbarValue: ", String.valueOf(seekbarValue));
+//        Log.i("Values", values);
+        ArrayList<Float> floats = new ArrayList<Float>();
+//        Log.i("SeekBarValue", String.valueOf(seekbarValue));
+        if (seekbarEffectMultiply.getProgress() == 2) seekbarValue = 1f;
+
+        if (didCreate == false) {
+            floats.addAll(Arrays.asList(parseFloat(econ) * seekbarValue, parseFloat(dipl) * seekbarValue, parseFloat(govt) * seekbarValue, parseFloat(scty) * seekbarValue));
+            String floatsWithoutMultiply = "econ " + econ + " dipl " + dipl + " govt " + govt + " scty " + scty;
+//        Log.i("Floats: ", String.valueOf(floats));
+//        Log.i("Values Without Multiply", floatsWithoutMultiply);
+//        userEffectValues.addAll(Arrays.asList(Float.parseFloat(econ), Float.parseFloat(dipl), Float.parseFloat(govt), Float.parseFloat(scty)));
+            userEffectValues.addAll(Arrays.asList(floats));
+            getEffectResult(userEffectValues);
+        }
+
+//        Log.i("Parse Float pos: " + String.valueOf(posQuestion), String.valueOf(userEffectValues.get(posQuestion)));
         seekbarEffectMultiply.setProgress(2);
+//        floats.clear();
     }
 
     @Override
@@ -167,9 +213,19 @@ public class QuestionsPageActivity extends QuestionsPageController {
                         effectSeekbarValue = 1;
                         userOpinion = "Concordo Fortemente";
                         break;
+                    default:
+                        effectSeekbarValue = 0;
+                        userOpinion = "Neutro";
+                        break;
                 }
 
         return effectSeekbarValue;
+    }
+
+    public void getEffectResult(ArrayList<ArrayList<Float>> result) {
+        for (int pos = 0; pos < result.size(); pos ++) {
+            Log.i("Value " + String.valueOf(pos), String.valueOf(result));
+        }
     }
 }
 

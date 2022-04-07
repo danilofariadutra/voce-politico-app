@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/questions_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_questions_background">
@@ -63,7 +63,6 @@
         app:layout_constraintTop_toBottomOf="@+id/seekbar_choice" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/text_econ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +73,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_next_question" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/value_econ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,7 +83,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_next_question" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/text_dipl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,7 +93,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_econ" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/value_dipl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,7 +103,6 @@
         app:layout_constraintTop_toBottomOf="@+id/value_econ" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/text_govt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -118,7 +113,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_dipl" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/value_govt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -129,7 +123,6 @@
         app:layout_constraintTop_toBottomOf="@+id/value_dipl" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/text_scty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -140,7 +133,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_govt" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/value_scty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

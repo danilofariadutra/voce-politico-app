@@ -9,17 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-<!--        <activity android:name=".QuestionsPageActivity">-->
-        <activity android:name=".test_sharedpreferences">
+        <activity android:name=".QuestionsPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainController" />
-        <activity android:name=".EightValuesExplanationOne" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".EightValuesExplanationOne" />
         <activity android:name=".EightValuesExplanationTwo"/>
         <activity android:name=".QuestionsPageController"/>
     </application>

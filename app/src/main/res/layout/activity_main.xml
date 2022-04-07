@@ -83,7 +83,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/dark_1"
-        android:onClick="go_to_explanation "
+    android:onClick="go_to_explanation"
         android:text="Vamos lá!"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -94,6 +94,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_background_main_subtitle"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintVertical_bias="0.285"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
