@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -23,31 +24,18 @@ public class QuestionsPageActivity extends QuestionsPageController {
         super.onCreate(savedInstanceState);
         setContentView(questions_page);
         didCreate = true;
-//        setupUI(); // Configura a Content
-        setupAll(); // Configura os objetos do Controller
-        getQuestions(posQuestion);
-//        posQuestion ++;
-
-//        if (posQuestion == 0) {
-//            questionPosition.setText("Questão 0" + String.valueOf(posQuestion + 1) + " de 70");
-//            seekbarValue = multiplyEffectValues(seekbarEffectMultiply.getProgress());
-//
-//            try {
-//                tvEcon.setText(String.valueOf(parseFloat( econ) * seekbarValue));
-//                tvDipl.setText(String.valueOf(parseFloat(dipl) * seekbarValue));
-//                tvGovt.setText(String.valueOf(parseFloat(govt) * seekbarValue));
-//                tvScty.setText(String.valueOf(parseFloat(scty) * seekbarValue));
-//            } catch (NumberFormatException e) {
-//                e.printStackTrace();
-//                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        }
+        setupAll();
+        showQuestionsOnDisplay(posQuestion);
 
         btnQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                didCreate = false;
-                getQuestions(posQuestion);
+                getUserValues();
+
+                posQuestion ++;
+
+                avoidCrashActivity();
+                showQuestionsOnDisplay(posQuestion);
             }
         });
 
@@ -56,25 +44,12 @@ public class QuestionsPageActivity extends QuestionsPageController {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 String v = String.valueOf(multiplyEffectValues(i));
                 seekbarValue = multiplyEffectValues(i);
-                textView.setText(v);
-                Toast.makeText(QuestionsPageActivity.this, String.valueOf(posQuestion), Toast.LENGTH_SHORT).show();
-//                Log.i("Valores", values);
-//                Log.i("Multiply", String.valueOf(parseFloat( econ) * seekbarValue) + " " + String.valueOf(parseFloat(dipl) * seekbarValue) + " " + String.valueOf(parseFloat(govt) * seekbarValue) + " " + String.valueOf(parseFloat(scty) * seekbarValue));
-//                Log.i("posQuestion", String.valueOf(posQuestion));
-//                if (userEffectValues.size() > 0) {
-//                    Log.i("Array", String.valueOf(userEffectValues.get(posQuestion)));
-//                }
-//                Log.i("userEffectValues.size", String.valueOf(userEffectValues.size()));
-                Toast.makeText(QuestionsPageActivity.this, String.valueOf(didCreate), Toast.LENGTH_SHORT).show();
-//                if (didCreate) didCreate = false;
+                changeTextView(v, textView);
 
-
-//                if (posQuestion > 0) {
-                    tvEcon.setText(String.valueOf(parseFloat( econ) * seekbarValue));
-                    tvDipl.setText(String.valueOf(parseFloat(dipl) * seekbarValue));
-                    tvGovt.setText(String.valueOf(parseFloat(govt) * seekbarValue));
-                    tvScty.setText(String.valueOf(parseFloat(scty) * seekbarValue));
-//                }
+                changeTextView(String.valueOf(parseFloat(econ) * seekbarValue), tvEcon);
+                changeTextView(String.valueOf(parseFloat(dipl) * seekbarValue), tvDipl);
+                changeTextView(String.valueOf(parseFloat(govt) * seekbarValue), tvGovt);
+                changeTextView(String.valueOf(parseFloat(scty) * seekbarValue), tvScty);
             }
 
             @Override
@@ -89,18 +64,43 @@ public class QuestionsPageActivity extends QuestionsPageController {
         });
     }
 
-    public void getQuestions(Integer posQuestion)  {
-        Toast.makeText(this, String.valueOf(posQuestion), Toast.LENGTH_SHORT).show();
+    public boolean avoidCrashActivity() {
+        int sizeOfArrayQuestions = getQuestionsFromJSON().size();
+        if (posQuestion >= sizeOfArrayQuestions) {
+            Toast.makeText(QuestionsPageActivity.this, String.valueOf(posQuestion), Toast.LENGTH_LONG).show();
+            posQuestion = 0;
+            return true;
+        }
+        return false;
+    }
 
-//        if (posQuestion > 3) Toast.makeText(this, "Acabou", Toast.LENGTH_LONG).show();
-
-        // Objeto das questoes
+    // Formata as linhas de questoes vindas do arquivo .json e retorna uma ArrayList<String>
+    public ArrayList<String> getQuestionsFromJSON() {
         ArrayList<String> questions_list = new ArrayList<>();
         String question_string = "";
         StringBuilder question_string_builder = new StringBuilder();
         InputStream questions_input_stream = this.getResources().openRawResource(R.raw.questions);
         BufferedReader questions_buffer_reader = new BufferedReader(new InputStreamReader(questions_input_stream));
 
+        // Trata a string para as Questoes
+        while (true) {
+            try {
+                if ((question_string = questions_buffer_reader.readLine()) == null) break;
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            question_string_builder.append(question_string);
+            if (question_string != "\n") {
+                questions_list.add(question_string);
+                question_string = "";
+            }
+        }
+        return questions_list;
+    }
+
+    // Formata os valores econ, dipl, govt e scty vindos do arquivo .json e retorna uma ArrayList<String>
+    public ArrayList<String> getEffectValuesFromJSON() {
         // Objeto dos valores effect
         ArrayList<String> effect_list = new ArrayList<>();
         String effect_string = "";
@@ -122,53 +122,75 @@ public class QuestionsPageActivity extends QuestionsPageController {
                 effect_string = "";
             }
         }
+        return effect_list;
+    }
 
-        // Trata a string para as Questoes
-        while (true) {
-            try {
-                if ((question_string = questions_buffer_reader.readLine()) == null) break;
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            question_string_builder.append(question_string);
-            if (question_string != "\n") {
-                questions_list.add(question_string);
-                question_string = "";
-            }
+    // Exibe todas as informacoes na Activity
+    public void showQuestionsOnDisplay(Integer pos)  {
+        setInitialSeekbarProgress();
+        parseEffectValuesToFloat();
+        changeAllTextViews();
         }
 
-        // Teste para nao quebrar o app (Nao excede o tamanho da lista)
-        if (posQuestion == effect_list.size()) posQuestion = 0;
-        values = effect_list.get(posQuestion).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
+    public void setInitialSeekbarProgress() {
+        seekbarEffectMultiply.setProgress(2);
+        if (seekbarEffectMultiply.getProgress() == 2) seekbarValue = 0f;
+    }
+
+    // Quebra os valores da ArrayList<String> com os 4 valores (econ, dipl, govt, scty), e repassa para econ, dipl, govt, scty
+    public void parseEffectValuesToFloat() {
+        ArrayList<String> arrayEffectValues = getEffectValuesFromJSON();
+
+        values = arrayEffectValues.get(posQuestion).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
 
         econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
         dipl = values.substring(values.indexOf("dipl ") + 5, values.indexOf(",", values.indexOf("dipl ")));
         govt = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
         scty = values.substring(values.indexOf("scty ") + 5);
-        tvQuestions.setText(questions_list.get(posQuestion));
+
+        Log.i("Parse Multiply Values", "Seekbar: " + String.valueOf(seekbarValue) + " | econ: " + String.valueOf(econ) + " | dipl: " + String.valueOf(dipl) + " | govt: " + String.valueOf(govt) + " | scty: " + String.valueOf(scty));
+    }
+
+    // Mostra os valores econ, dipl, govt e scty, multiplicando pelo valor da seekbar e mostra a questão em TextView, formatando os valores da posicao se maior ou menor que duas casas decimais
+    public void changeAllTextViews() {
+        changeTextView(String.valueOf(parseFloat(econ) * seekbarValue), tvEcon);
+        changeTextView(String.valueOf(parseFloat(dipl) * seekbarValue), tvDipl);
+        changeTextView(String.valueOf(parseFloat(govt) * seekbarValue), tvGovt);
+        changeTextView(String.valueOf(parseFloat(scty) * seekbarValue), tvScty);
+        changeTextView(String.valueOf(seekbarValue), textView);
+
+        changeTextView(getQuestionsFromJSON().get(posQuestion), tvQuestions);
 
         if (posQuestion < 9) {
-            questionPosition.setText("Questão 0" + String.valueOf(posQuestion + 1) + " de 70");
+            changeTextView("Questão 0" + String.valueOf(posQuestion + 1) + " de 70", questionPosition);
         } else {
-            questionPosition.setText("Questão " + String.valueOf(posQuestion + 1) + " de 70");
+            changeTextView("Questão " + String.valueOf(posQuestion + 1) + " de 70", questionPosition);
         }
+    }
 
+    // Soma os valores escolhidos pelo user e os valores maximos de cada um dos 4 valores: econ, dipl, govt scty
+    public void getUserValues() {
         ArrayList<Float> floats = new ArrayList<Float>();
+        floats.addAll(Arrays.asList(parseFloat(econ) * seekbarValue, parseFloat(dipl) * seekbarValue, parseFloat(govt) * seekbarValue, parseFloat(scty) * seekbarValue));
 
-        // Verifica quando na primeira vez o getProgress vem zerado
-        if (seekbarEffectMultiply.getProgress() == 2) seekbarValue = 0f;
+        // Valores da escolha do user
+        econScore += floats.get(0) * seekbarValue;
+        diplScore += floats.get(1) * seekbarValue;
+        govtScore += floats.get(2) * seekbarValue;
+        sctyScore += floats.get(3) * seekbarValue;
 
-        // Grava as escolhas somente apos onCreate
-        if (didCreate == false) {
-            floats.addAll(Arrays.asList(parseFloat(econ) * seekbarValue, parseFloat(dipl) * seekbarValue, parseFloat(govt) * seekbarValue, parseFloat(scty) * seekbarValue));
-            userEffectValues.addAll(Arrays.asList(floats));
-            getEffectResult(userEffectValues);
-        }
+        // Valores maximos
+        maxEcon += Math.abs(parseFloat(econ));
+        maxDipl += Math.abs(parseFloat(dipl));
+        maxGovt += Math.abs(parseFloat(govt));
+        maxScty += Math.abs(parseFloat(scty));
 
-        Toast.makeText(this, String.valueOf(0 == -0), Toast.LENGTH_SHORT).show();
+        Log.i("User Score", "econScore: " + String.valueOf(econScore) + " | diplScore: " + String.valueOf(diplScore) + " | govtScore: " + String.valueOf(govtScore) + " | sctyScore: " + String.valueOf(sctyScore));
+        Log.i("Max Score", "MAX econ: " + String.valueOf(maxEcon) + " | MAX dipl: " + String.valueOf(maxDipl) + " | MAX govt: " + String.valueOf(maxGovt) + " | MAX scty: " + String.valueOf(maxScty));
+    }
 
-        seekbarEffectMultiply.setProgress(2);
+    public void changeTextView(String string, TextView textView) {
+        textView.setText(string);
     }
 
     @Override
@@ -208,6 +230,22 @@ public class QuestionsPageActivity extends QuestionsPageController {
     }
 
     public void getEffectResult(ArrayList<ArrayList<Float>> result) {
+        for (int pos = 0; pos < result.size(); pos ++) {
+            Log.i("Value " + String.valueOf(pos), String.valueOf(result));
+        }
+    }
+
+    /*
+    * equality = econ
+    * peace = dipl
+    * liberty = govt
+    * progress = scty
+    * wealth    = (100 - equality)
+    * might     = (100 - peace)
+    * authority = (100 - liberty)
+    * tradition = (100 - progress)
+    */
+    public void resultOfEffect(ArrayList<ArrayList<Float>> result) {
         for (int pos = 0; pos < result.size(); pos ++) {
             Log.i("Value " + String.valueOf(pos), String.valueOf(result));
         }
