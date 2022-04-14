@@ -7,16 +7,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 
 public class QuestionsPageController extends AppCompatActivity {
-    public int posQuestion = 0;
+    public static int posQuestion = 0;
 
     SharedPreferences userValues;
     SharedPreferences.Editor userValuesEditor;
 
     public static TextView tvQuestions;
+    public static TextView tvCalculatingText;
     public static TextView tvEcon;
     public static TextView tvDipl;
     public static TextView tvGovt;
@@ -37,23 +36,22 @@ public class QuestionsPageController extends AppCompatActivity {
     public static float effectSeekbarValue = 0;
     public static String userOpinion = "";
 
-    ArrayList<Float> econArray = new ArrayList<Float>();
-    ArrayList<Float> diplArray = new ArrayList<Float>();
-    ArrayList<Float> govtArray = new ArrayList<Float>();
-    ArrayList<Float> sctyArray = new ArrayList<Float>();
+    public static TextView userScore;
+    public static TextView maxScore;
 
-    Float maxEcon = 0f;
-    Float maxDipl = 0f;
-    Float maxGovt = 0f;
-    Float maxScty = 0f;
+    public static Float maxEcon = 0f;
+    public static Float maxDipl = 0f;
+    public static Float maxGovt = 0f;
+    public static Float maxScty = 0f;
 
-    Float econScore = 0f;
-    Float diplScore = 0f;
-    Float sctyScore = 0f;
-    Float govtScore = 0f;
+    public static Float econScore = 0f;
+    public static Float diplScore = 0f;
+    public static Float sctyScore = 0f;
+    public static Float govtScore = 0f;
 
     public void setupAll() {
         questionPosition = findViewById(R.id.question_info);
+        tvCalculatingText = findViewById(R.id.calculating_text);
         tvQuestions = findViewById(R.id.question_box);
         btnQuestion = findViewById(R.id.btn_next_question);
         tvEcon = findViewById(R.id.value_econ);
@@ -63,6 +61,13 @@ public class QuestionsPageController extends AppCompatActivity {
         seekbarEffectMultiply = findViewById(R.id.seekbar_choice);
         textView = findViewById(R.id.teste);
 
+        userScore = findViewById(R.id.user_score);
+        maxScore = findViewById(R.id.max_score);
+
         userValues = getSharedPreferences("PREFERENCIAS", MODE_PRIVATE);
+    }
+
+    public enum ValuesEnum {
+        ECON, DIPL, GOVT, SCTY;
     }
 }

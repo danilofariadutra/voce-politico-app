@@ -10,4 +10,14 @@
     <color name="dark_1">#1A1D1E</color>
     <color name="gray_1">#DADBD8</color>
     <color name="transparency">#00000000</color>
+    <color name="socialism">#F44336</color>
+    <color name="liberalism">#00897B</color>
+    <color name="nacionalism">#FF9800</color>
+    <color name="globalism">#03A9F4</color>
+    <color name="libertarianism">#FFEB3B</color>
+    <color name="authoritarism">#3F51B5</color>
+    <color name="conservatism">#8BC34A</color>
+    <color name="progressivism">#9C27B0</color>
+
+
 </resources>

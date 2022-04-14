@@ -1,11 +1,14 @@
 package com.example.vocepolitico;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,16 +17,18 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.example.vocepolitico.QuestionsPageController.ValuesEnum.DIPL;
+import static com.example.vocepolitico.QuestionsPageController.ValuesEnum.ECON;
+import static com.example.vocepolitico.QuestionsPageController.ValuesEnum.GOVT;
+import static com.example.vocepolitico.QuestionsPageController.ValuesEnum.SCTY;
 import static com.example.vocepolitico.R.layout.questions_page;
 import static java.lang.Float.parseFloat;
 
 public class QuestionsPageActivity extends QuestionsPageController {
-    private Boolean didCreate = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(questions_page);
-        didCreate = true;
         setupAll();
         showQuestionsOnDisplay(posQuestion);
 
@@ -65,21 +70,41 @@ public class QuestionsPageActivity extends QuestionsPageController {
     }
 
     public boolean avoidCrashActivity() {
-        int sizeOfArrayQuestions = getQuestionsFromJSON().size();
+        int sizeOfArrayQuestions = readJSONFile(R.raw.questions).size();
         if (posQuestion >= sizeOfArrayQuestions) {
-            Toast.makeText(QuestionsPageActivity.this, String.valueOf(posQuestion), Toast.LENGTH_LONG).show();
+//            Toast.makeText(QuestionsPageActivity.this, String.valueOf(posQuestion), Toast.LENGTH_LONG).show();
             posQuestion = 0;
+//            changeTextView(" ", tvQuestions);
+//            changeTextView(" ", questionPosition);
+            tvQuestions.setVisibility(View.INVISIBLE);
+            questionPosition.setVisibility(View.INVISIBLE);
+            seekbarEffectMultiply.setVisibility(View.INVISIBLE);
+            btnQuestion.setVisibility(View.INVISIBLE);
+            tvCalculatingText.setVisibility(View.VISIBLE);
+
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.blink);
+            animation.reset();
+            tvCalculatingText.clearAnimation();
+            tvCalculatingText.startAnimation(animation);
+
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(QuestionsPageActivity.this, QuestionResultActivity.class);
+                    startActivity(intent);
+                }
+            }, 1000); //5000
             return true;
         }
         return false;
     }
 
-    // Formata as linhas de questoes vindas do arquivo .json e retorna uma ArrayList<String>
-    public ArrayList<String> getQuestionsFromJSON() {
+    public ArrayList<String> readJSONFile(Integer jsonRawFile) {
         ArrayList<String> questions_list = new ArrayList<>();
         String question_string = "";
         StringBuilder question_string_builder = new StringBuilder();
-        InputStream questions_input_stream = this.getResources().openRawResource(R.raw.questions);
+        InputStream questions_input_stream = this.getResources().openRawResource(jsonRawFile);
         BufferedReader questions_buffer_reader = new BufferedReader(new InputStreamReader(questions_input_stream));
 
         // Trata a string para as Questoes
@@ -99,36 +124,13 @@ public class QuestionsPageActivity extends QuestionsPageController {
         return questions_list;
     }
 
-    // Formata os valores econ, dipl, govt e scty vindos do arquivo .json e retorna uma ArrayList<String>
-    public ArrayList<String> getEffectValuesFromJSON() {
-        // Objeto dos valores effect
-        ArrayList<String> effect_list = new ArrayList<>();
-        String effect_string = "";
-        StringBuilder effect_string_builder = new StringBuilder();
-        InputStream effect_input_stream = this.getResources().openRawResource(R.raw.effect);
-        BufferedReader effect_values_buffer_reader = new BufferedReader(new InputStreamReader(effect_input_stream));
-
-        // Trata a string para os valores effect das questoes
-        while (true) {
-            try {
-                if ((effect_string = effect_values_buffer_reader.readLine()) == null) break;
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            effect_string_builder.append(effect_string);
-            if (effect_string != "\n") {
-                effect_list.add(effect_string);
-                effect_string = "";
-            }
-        }
-        return effect_list;
-    }
-
     // Exibe todas as informacoes na Activity
     public void showQuestionsOnDisplay(Integer pos)  {
         setInitialSeekbarProgress();
-        parseEffectValuesToFloat();
+        econ = getStatValuesFromEffect(readJSONFile(R.raw.effect), ECON);
+        dipl = getStatValuesFromEffect(readJSONFile(R.raw.effect), DIPL);
+        govt = getStatValuesFromEffect(readJSONFile(R.raw.effect), GOVT);
+        scty = getStatValuesFromEffect(readJSONFile(R.raw.effect), SCTY);
         changeAllTextViews();
         }
 
@@ -138,18 +140,25 @@ public class QuestionsPageActivity extends QuestionsPageController {
     }
 
     // Quebra os valores da ArrayList<String> com os 4 valores (econ, dipl, govt, scty), e repassa para econ, dipl, govt, scty
-    public void parseEffectValuesToFloat() {
-        ArrayList<String> arrayEffectValues = getEffectValuesFromJSON();
-
-        values = arrayEffectValues.get(posQuestion).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
-
-        econ = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
-        dipl = values.substring(values.indexOf("dipl ") + 5, values.indexOf(",", values.indexOf("dipl ")));
-        govt = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
-        scty = values.substring(values.indexOf("scty ") + 5);
-
-        Log.i("Parse Multiply Values", "Seekbar: " + String.valueOf(seekbarValue) + " | econ: " + String.valueOf(econ) + " | dipl: " + String.valueOf(dipl) + " | govt: " + String.valueOf(govt) + " | scty: " + String.valueOf(scty));
-    }
+    public static String getStatValuesFromEffect(ArrayList<String> arrayList, ValuesEnum pos) {
+        values = arrayList.get(posQuestion).replaceAll(":", "").replaceAll("'", "").replace("{", "").replace("}", "");
+        String valueString = "";
+        switch(pos) {
+            case ECON:
+                valueString = values.substring(values.indexOf("econ ") + 5, values.indexOf(","));
+                break;
+            case DIPL:
+                valueString = values.substring(values.indexOf("dipl ") + 5, values.indexOf(",", values.indexOf("dipl ")));
+                break;
+            case GOVT:
+                valueString = values.substring(values.indexOf("govt ") + 5, values.indexOf(",", values.indexOf("govt ")));
+                break;
+            case SCTY:
+                valueString = values.substring(values.indexOf("scty ") + 5);
+                break;
+        }
+                return valueString;
+   }
 
     // Mostra os valores econ, dipl, govt e scty, multiplicando pelo valor da seekbar e mostra a questão em TextView, formatando os valores da posicao se maior ou menor que duas casas decimais
     public void changeAllTextViews() {
@@ -159,7 +168,7 @@ public class QuestionsPageActivity extends QuestionsPageController {
         changeTextView(String.valueOf(parseFloat(scty) * seekbarValue), tvScty);
         changeTextView(String.valueOf(seekbarValue), textView);
 
-        changeTextView(getQuestionsFromJSON().get(posQuestion), tvQuestions);
+        changeTextView(readJSONFile(R.raw.questions).get(posQuestion), tvQuestions);
 
         if (posQuestion < 9) {
             changeTextView("Questão 0" + String.valueOf(posQuestion + 1) + " de 70", questionPosition);
@@ -174,10 +183,10 @@ public class QuestionsPageActivity extends QuestionsPageController {
         floats.addAll(Arrays.asList(parseFloat(econ) * seekbarValue, parseFloat(dipl) * seekbarValue, parseFloat(govt) * seekbarValue, parseFloat(scty) * seekbarValue));
 
         // Valores da escolha do user
-        econScore += floats.get(0) * seekbarValue;
-        diplScore += floats.get(1) * seekbarValue;
-        govtScore += floats.get(2) * seekbarValue;
-        sctyScore += floats.get(3) * seekbarValue;
+        econScore += floats.get(0);
+        diplScore += floats.get(1);
+        govtScore += floats.get(2);
+        sctyScore += floats.get(3);
 
         // Valores maximos
         maxEcon += Math.abs(parseFloat(econ));
@@ -187,9 +196,11 @@ public class QuestionsPageActivity extends QuestionsPageController {
 
         Log.i("User Score", "econScore: " + String.valueOf(econScore) + " | diplScore: " + String.valueOf(diplScore) + " | govtScore: " + String.valueOf(govtScore) + " | sctyScore: " + String.valueOf(sctyScore));
         Log.i("Max Score", "MAX econ: " + String.valueOf(maxEcon) + " | MAX dipl: " + String.valueOf(maxDipl) + " | MAX govt: " + String.valueOf(maxGovt) + " | MAX scty: " + String.valueOf(maxScty));
+        userScore.setText(String.valueOf(econScore) + " " + String.valueOf(diplScore) + " " + String.valueOf(govtScore) + " " + String.valueOf(sctyScore));
+        maxScore.setText(String.valueOf(maxEcon) + " " + String.valueOf(maxDipl) + " " + String.valueOf(maxGovt) + " " + String.valueOf(maxScty));
     }
 
-    public void changeTextView(String string, TextView textView) {
+    public static void changeTextView(String string, TextView textView) {
         textView.setText(string);
     }
 
