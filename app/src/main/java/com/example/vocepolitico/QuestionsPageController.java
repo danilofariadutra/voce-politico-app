@@ -25,6 +25,10 @@ public class QuestionsPageController extends AppCompatActivity {
     public static SeekBar seekbarEffectMultiply;
     public static Float seekbarValue;
 
+    public static TextView tvUserChoice;
+    public static TextView tvUserTitle;
+
+
     public static String values;
     public static String econ;
     public static String dipl;
@@ -60,6 +64,8 @@ public class QuestionsPageController extends AppCompatActivity {
         tvScty = findViewById(R.id.value_scty);
         seekbarEffectMultiply = findViewById(R.id.seekbar_choice);
         textView = findViewById(R.id.teste);
+        tvUserChoice = findViewById(R.id.text_choice);
+        tvUserTitle = findViewById(R.id.user_choice_textview);
 
         userScore = findViewById(R.id.user_score);
         maxScore = findViewById(R.id.max_score);

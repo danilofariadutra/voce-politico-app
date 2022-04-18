@@ -5,12 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/text_title_splash_screen_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="30dp"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Você conhece as funções de cada cargo político?"
@@ -21,6 +23,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/divider_splash_screen_01"
         android:layout_width="407dp"
         android:layout_height="2dp"

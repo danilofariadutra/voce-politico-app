@@ -1,7 +1,6 @@
 package com.example.vocepolitico;
 
 import android.util.Log;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.example.vocepolitico.QuestionsPageActivity.changeTextView;
 import static com.example.vocepolitico.QuestionsPageController.ValuesEnum.DIPL;
 import static com.example.vocepolitico.QuestionsPageController.ValuesEnum.ECON;
 import static com.example.vocepolitico.QuestionsPageController.ValuesEnum.GOVT;
@@ -28,11 +28,18 @@ import static com.example.vocepolitico.QuestionsPageController.maxDipl;
 import static com.example.vocepolitico.QuestionsPageController.maxEcon;
 import static com.example.vocepolitico.QuestionsPageController.maxGovt;
 import static com.example.vocepolitico.QuestionsPageController.maxScty;
+import static com.example.vocepolitico.QuestionsPageController.posQuestion;
 import static com.example.vocepolitico.QuestionsPageController.sctyScore;
 
 public class QuestionResultController extends AppCompatActivity {
     public static TextView tvResult;
     public static TextView tvResultValue;
+    public static TextView tvEconStatsIdeology;
+    public static TextView tvDiplStatsIdeology;
+    public static TextView tvGovtStatsIdeology;
+    public static TextView tvSctyStatsIdeology;
+
+
 
     public static ProgressBar economicProgressBar;
     public static ProgressBar diplomaticProgressBar;
@@ -62,44 +69,77 @@ public class QuestionResultController extends AppCompatActivity {
     public void setupItems() {
         tvResult = findViewById(R.id.result_title_textview);
         tvResultValue = findViewById(R.id.result_value_textview);
+        tvEconStatsIdeology = findViewById(R.id.economic_axis_value_textview);
+        tvDiplStatsIdeology = findViewById(R.id.diplomatic_axis_value_textview);
+        tvGovtStatsIdeology = findViewById(R.id.civil_axis_value_textview);
+        tvSctyStatsIdeology = findViewById(R.id.societal_axis_value_textview);
 
-//        testPrintList(items);
         setProgressBar();
-        calculateIdeology();
+        calculateStandartIdeology();
 
-        // aqui
-
-//        changeTextView(readJSONFile(R.raw.ideologies_string).get(51), tvResultValue);
+        changeTextView(calculateStandartIdeology(), tvResultValue);
+        changeTextView(calculateStatsIdeology(Math.round(economicBarValue), econArray), tvEconStatsIdeology);
+        changeTextView(calculateStatsIdeology(Math.round(diplomaticBarValue), diplArray), tvDiplStatsIdeology);
+        changeTextView(calculateStatsIdeology(Math.round(civilBarValue), govtArray), tvGovtStatsIdeology);
+        changeTextView(calculateStatsIdeology(Math.round(societalBarValue), sctyArray), tvSctyStatsIdeology);
     }
 
-    public void calculateIdeology() {
+    public String calculateStatsIdeology(Integer stats, List<String> stringList) {
+        List<Integer> ordinateValues = Arrays.asList(100, 90, 75, 60, 40, 25, 10, 0);
+
+        if(stats > ordinateValues.get(0)) {
+            return "";
+        } else if (stats > ordinateValues.get(1)) {
+            return stringList.get(0);
+        } else if (stats > ordinateValues.get(2)) {
+            return stringList.get(1);
+        } else if (stats > ordinateValues.get(3)) {
+            return stringList.get(2);
+        } else if (stats >= ordinateValues.get(4)) {
+            return stringList.get(3);
+        } else if (stats >= ordinateValues.get(5)) {
+            return stringList.get(4);
+        } else if (stats >= ordinateValues.get(6)) {
+            return stringList.get(5);
+        } else if (stats >= ordinateValues.get(7)) {
+            return stringList.get(6);
+        } else {
+            return "";
+        }
+    }
+
+    public String calculateStandartIdeology() {
         int ideologiesSize = readJSONFile(R.raw.ideologies_string).size();
-//        ArrayList<String> ideologiesStats = readJSONFile(R.raw.ideologies_values);
-
-
-
-//        for (int i = 0; i < ideologiesStats.size(); i ++) {
-//            Log.i("Ideologies Stats", String.valueOf(ideologiesStats.get(i)));
-//        }
 
         String ideology = "";
-        Float ideodist = 0f;
+        double ideodist = 999f;
         double dist = 0f;
-        for(int pos = 0; pos < ideologiesSize; pos ++) {
+
+        for(posQuestion = 0; posQuestion < ideologiesSize; posQuestion ++) {
             ArrayList<String> ideologiesStats = readJSONFile(R.raw.ideologies_values);
-//            String
+            ArrayList<String> ideologies = readJSONFile(R.raw.ideologies_string);
+
             ideologiesEconStats = Integer.parseInt(QuestionsPageActivity.getStatValuesFromEffect(ideologiesStats,ECON));
             ideologiesDiplStats = Integer.parseInt(QuestionsPageActivity.getStatValuesFromEffect(ideologiesStats,DIPL));
             ideologiesGovtStats = Integer.parseInt(QuestionsPageActivity.getStatValuesFromEffect(ideologiesStats,GOVT));
             ideologiesSctyStats = Integer.parseInt(QuestionsPageActivity.getStatValuesFromEffect(ideologiesStats,SCTY));
-            dist = 0f;
-            dist += Math.pow(Math.abs(ideologiesEconStats - 50), 2);
-            dist += Math.pow(Math.abs(ideologiesDiplStats - 50), 2);
-            dist += Math.pow(Math.abs(ideologiesGovtStats - 50), 1.73856063);
-            dist += Math.pow(Math.abs(ideologiesSctyStats - 50), 1.73856063);
-            Log.i("dist", String.valueOf(dist));
-        }
 
+            Log.i("Stats", String.valueOf(ideologiesEconStats) + String.valueOf(ideologiesDiplStats) + String.valueOf(ideologiesGovtStats) + String.valueOf(ideologiesSctyStats));
+            dist = 0f;
+            dist += Math.pow(Math.abs(ideologiesEconStats - economicBarValue), 2);
+            dist += Math.pow(Math.abs(ideologiesDiplStats - diplomaticBarValue), 2);
+            dist += Math.pow(Math.abs(ideologiesGovtStats - civilBarValue), 1.73856063);
+            dist += Math.pow(Math.abs(ideologiesSctyStats - societalBarValue), 1.73856063);
+            Log.i("dist4", String.valueOf(dist) + " | ideodist: " + String.valueOf(ideodist));
+
+            if(dist < ideodist) {
+                ideology = ideologies.get(posQuestion);
+                ideodist = dist;
+                Log.i("Ideology", ideology);
+                Log.i("ideodist", String.valueOf(ideodist));
+            }
+        }
+        return ideology;
     }
 
     public void testPrintList(List<List> listOfList) {
@@ -186,6 +226,7 @@ public class QuestionResultController extends AppCompatActivity {
         tvResult.startAnimation(animation);
         animation.setDuration(2500);
         animation.cancel();
-        tvResult.setVisibility(View.INVISIBLE);
+
+
     }
 }

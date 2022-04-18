@@ -5,15 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/text_title_splash_screen_03"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="30dp"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Você tem ideia do peso da sua escolha?"
+        android:text="Você tem ideia do poder do seu voto?"
         android:textAlignment="center"
         android:textColor="#1A1D1E"
         android:textSize="26dp"

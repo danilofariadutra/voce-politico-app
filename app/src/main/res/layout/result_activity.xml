@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/result_title_textview"
@@ -227,6 +228,20 @@
         app:layout_constraintVertical_bias="0.487" />
 
     <TextView
+        android:id="@+id/economic_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/economic_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/economic_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/result_title_textview"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
         android:id="@+id/diplomatic_axis_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -238,6 +253,20 @@
         app:layout_constraintBottom_toTopOf="@+id/diplomatic_progressbar"
         app:layout_constraintStart_toEndOf="@+id/nation_image"
         app:layout_constraintTop_toBottomOf="@+id/economic_progressbar" />
+
+    <TextView
+        android:id="@+id/diplomatic_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/diplomatic_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/diplomatic_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/economic_progressbar"
+        app:layout_constraintVertical_bias="0.488" />
 
     <TextView
         android:id="@+id/civil_axis_textview"
@@ -253,6 +282,20 @@
         app:layout_constraintTop_toBottomOf="@+id/diplomatic_progressbar" />
 
     <TextView
+        android:id="@+id/civil_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/civil_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/civil_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/diplomatic_progressbar"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <TextView
         android:id="@+id/societal_axis_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -264,6 +307,20 @@
         app:layout_constraintBottom_toTopOf="@+id/societal_progressbar"
         app:layout_constraintStart_toEndOf="@+id/tradition_image"
         app:layout_constraintTop_toBottomOf="@+id/civil_progressbar" />
+
+    <TextView
+        android:id="@+id/societal_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/societal_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/societal_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/civil_progressbar"
+        app:layout_constraintVertical_bias="0.488" />
 
     <TextView
         android:id="@+id/result_subtitle_textview"
@@ -284,7 +341,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Centrista"
+        android:text="Ideologia"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -304,5 +361,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="211dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="103dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="179dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="257dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="335dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

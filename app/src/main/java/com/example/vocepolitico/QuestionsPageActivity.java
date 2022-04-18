@@ -31,6 +31,7 @@ public class QuestionsPageActivity extends QuestionsPageController {
         setContentView(questions_page);
         setupAll();
         showQuestionsOnDisplay(posQuestion);
+        QuestionsPageActivity.changeTextView(QuestionsPageActivity.returnMultiplyEffectText(2), tvUserChoice);
 
         btnQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,9 @@ public class QuestionsPageActivity extends QuestionsPageController {
         seekbarEffectMultiply.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+                changeTextView(QuestionsPageActivity.returnMultiplyEffectText(i), tvUserChoice);
+
                 String v = String.valueOf(multiplyEffectValues(i));
                 seekbarValue = multiplyEffectValues(i);
                 changeTextView(v, textView);
@@ -69,24 +73,26 @@ public class QuestionsPageActivity extends QuestionsPageController {
         });
     }
 
+    public void setupVisibility() {
+        tvQuestions.setVisibility(View.INVISIBLE);
+        questionPosition.setVisibility(View.INVISIBLE);
+        seekbarEffectMultiply.setVisibility(View.INVISIBLE);
+        btnQuestion.setVisibility(View.INVISIBLE);
+        tvCalculatingText.setVisibility(View.VISIBLE);
+        tvUserChoice.setVisibility(View.INVISIBLE);
+        tvUserTitle.setVisibility(View.INVISIBLE);
+    }
+
     public boolean avoidCrashActivity() {
         int sizeOfArrayQuestions = readJSONFile(R.raw.questions).size();
         if (posQuestion >= sizeOfArrayQuestions) {
-//            Toast.makeText(QuestionsPageActivity.this, String.valueOf(posQuestion), Toast.LENGTH_LONG).show();
             posQuestion = 0;
-//            changeTextView(" ", tvQuestions);
-//            changeTextView(" ", questionPosition);
-            tvQuestions.setVisibility(View.INVISIBLE);
-            questionPosition.setVisibility(View.INVISIBLE);
-            seekbarEffectMultiply.setVisibility(View.INVISIBLE);
-            btnQuestion.setVisibility(View.INVISIBLE);
-            tvCalculatingText.setVisibility(View.VISIBLE);
+            setupVisibility();
 
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.blink);
             animation.reset();
             tvCalculatingText.clearAnimation();
             tvCalculatingText.startAnimation(animation);
-
 
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -94,7 +100,7 @@ public class QuestionsPageActivity extends QuestionsPageController {
                     Intent intent = new Intent(QuestionsPageActivity.this, QuestionResultActivity.class);
                     startActivity(intent);
                 }
-            }, 1000); //5000
+            }, 5000); //5000
             return true;
         }
         return false;
@@ -240,22 +246,36 @@ public class QuestionsPageActivity extends QuestionsPageController {
         return effectSeekbarValue;
     }
 
+    public static String returnMultiplyEffectText(Integer seekbar_value) {
+        switch (seekbar_value) {
+            case 0:
+                userOpinion = "Discordo Fortemente";
+                break;
+            case 1:
+                userOpinion = "Discordo";
+                break;
+            case 2:
+                userOpinion = "Neutro";
+                break;
+            case 3:
+                userOpinion = "Concordo";
+                break;
+            case 4:
+                userOpinion = "Concordo Fortemente";
+                break;
+            default:
+                userOpinion = "Neutro";
+                break;
+        }
+        return userOpinion;
+    }
+
     public void getEffectResult(ArrayList<ArrayList<Float>> result) {
         for (int pos = 0; pos < result.size(); pos ++) {
             Log.i("Value " + String.valueOf(pos), String.valueOf(result));
         }
     }
 
-    /*
-    * equality = econ
-    * peace = dipl
-    * liberty = govt
-    * progress = scty
-    * wealth    = (100 - equality)
-    * might     = (100 - peace)
-    * authority = (100 - liberty)
-    * tradition = (100 - progress)
-    */
     public void resultOfEffect(ArrayList<ArrayList<Float>> result) {
         for (int pos = 0; pos < result.size(); pos ++) {
             Log.i("Value " + String.valueOf(pos), String.valueOf(result));
