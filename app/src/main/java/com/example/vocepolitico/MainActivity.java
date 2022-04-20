@@ -1,6 +1,7 @@
 package com.example.vocepolitico;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.Slide;
@@ -17,6 +18,7 @@ public class MainActivity extends MainController {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_splash_screen_01);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setupAll();
         initFirstTransition();
     }

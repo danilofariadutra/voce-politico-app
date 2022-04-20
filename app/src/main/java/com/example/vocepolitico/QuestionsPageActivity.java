@@ -1,6 +1,7 @@
 package com.example.vocepolitico;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class QuestionsPageActivity extends QuestionsPageController {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(questions_page);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setupAll();
         showQuestionsOnDisplay(posQuestion);
         QuestionsPageActivity.changeTextView(QuestionsPageActivity.returnMultiplyEffectText(2), tvUserChoice);

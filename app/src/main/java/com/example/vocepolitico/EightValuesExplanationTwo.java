@@ -1,6 +1,7 @@
 package com.example.vocepolitico;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
@@ -19,6 +20,7 @@ public class EightValuesExplanationTwo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(eight_values_explanation_02);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
 
         seekBarExample = findViewById(R.id.seekbar_example);
         choice = findViewById(R.id.text_choice);

@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:screenOrientation="portrait">
 
     <TextView
         android:id="@+id/text_title_splash_screen_01"
@@ -25,8 +26,8 @@
     <ImageView
         android:visibility="invisible"
         android:id="@+id/divider_splash_screen_01"
-        android:layout_width="407dp"
-        android:layout_height="2dp"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
         android:background="@color/gray_1"
         android:paddingLeft="5dp"
         android:paddingTop="2dp"
@@ -36,7 +37,7 @@
         android:src="@android:drawable/divider_horizontal_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_splash_screen_01"
         app:layout_constraintVertical_bias="0.0" />
@@ -53,8 +54,8 @@
 
     <ImageButton
         android:id="@+id/btn_right_splash_screen_01"
-        android:layout_width="15dp"
-        android:layout_height="18dp"
+        android:layout_width="20dp"
+        android:layout_height="23dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_button_right"
         android:onClick="splash_01_to_splash_screen_02"

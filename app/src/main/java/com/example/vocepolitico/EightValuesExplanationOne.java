@@ -1,6 +1,7 @@
 package com.example.vocepolitico;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,6 +14,7 @@ public class EightValuesExplanationOne extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(eight_values_explanation_01);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
     }
 
     public void explanation_01_to_explanation_02(View view) {
