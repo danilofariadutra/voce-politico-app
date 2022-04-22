@@ -1,8 +1,12 @@
 package com.example.vocepolitico;
 
+import android.transition.Scene;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -38,8 +42,18 @@ public class QuestionResultController extends AppCompatActivity {
     public static TextView tvDiplStatsIdeology;
     public static TextView tvGovtStatsIdeology;
     public static TextView tvSctyStatsIdeology;
+    public static TextView tvEconTitle;
+    public static TextView tvDiplTitle;
+    public static TextView tvGovtTitle;
+    public static TextView tvSctyTitle;
+    public static TextView tvResultSubtitle;
 
+    public static ImageView imgvSocialism;
+    public static ImageView imgvLiberalism;
+    public static ImageView imgvNacionalism;
+    public static ImageView imgvGlobalism;
 
+    public Button btnAboutResult;
 
     public static ProgressBar economicProgressBar;
     public static ProgressBar diplomaticProgressBar;
@@ -57,14 +71,12 @@ public class QuestionResultController extends AppCompatActivity {
     public static Integer ideologiesSctyStats;
 
 
-    public static List<String> econArray = Arrays.asList("Communist", "Socialist", "Social", "Centrist", "Market", "Capitalist", "Laissez-Faire");
-    public static List<String> diplArray =  Arrays.asList("Cosmopolitan", "Internationalist", "Peaceful", "Balanced", "Patriotic", "Nationalist", "Chauvinist");
-    public static List<String> govtArray = Arrays.asList("Anarchist", "Libertarian", "Liberal", "Moderate", "Statist", "Authoritarian", "Totalitarian");
-    public static List<String> sctyArray = Arrays.asList("Revolutionary", "Very Progressive", "Progressive", "Neutral", "Traditional", "Very Traditional", "Reactionary");
+    public static List<String> econArray = Arrays.asList("Comunista", "Socialista", "Social-Democrata", "Centrista", "Liberal", "Capitalista", "Laissez-Faire");
+    public static List<String> diplArray =  Arrays.asList("Cosmopolitano", "Internationalista", "Pacifista", "Moderado", "Patriota", "Nationalista", "Extremista");
+    public static List<String> govtArray = Arrays.asList("Anarquista", "Libertário", "Liberal", "Moderado", "Estatista", "Autoritário", "Totalitário");
+    public static List<String> sctyArray = Arrays.asList("Revolucionário", "Progressista Extremo", "Progressista", "Neutro", "Conservador", "Conservador Extremo", "Reacionário");
 
-    public static List<List> items = Arrays.asList(econArray, diplArray, govtArray, sctyArray);
-
-    public static int counter = 0;
+//    public static List<List> items = Arrays.asList(econArray, diplArray, govtArray, sctyArray);
 
     public void setupItems() {
         tvResult = findViewById(R.id.result_title_textview);
@@ -73,6 +85,18 @@ public class QuestionResultController extends AppCompatActivity {
         tvDiplStatsIdeology = findViewById(R.id.diplomatic_axis_value_textview);
         tvGovtStatsIdeology = findViewById(R.id.civil_axis_value_textview);
         tvSctyStatsIdeology = findViewById(R.id.societal_axis_value_textview);
+        btnAboutResult = findViewById(R.id.btn_about_result);
+
+        imgvSocialism = findViewById(R.id.equality_image);
+        imgvLiberalism = findViewById(R.id.markets_image);
+        imgvNacionalism = findViewById(R.id.nation_image);
+        imgvGlobalism = findViewById(R.id.globe_image);
+
+        tvEconTitle = findViewById(R.id.economic_axis_textview);
+        tvDiplTitle = findViewById(R.id.diplomatic_axis_textview);
+        tvGovtTitle = findViewById(R.id.civil_axis_textview);
+        tvSctyTitle = findViewById(R.id.societal_axis_textview);
+        tvResultSubtitle = findViewById(R.id.result_subtitle_textview);
 
         setProgressBar();
         calculateStandartIdeology();
@@ -226,7 +250,15 @@ public class QuestionResultController extends AppCompatActivity {
         tvResult.startAnimation(animation);
         animation.setDuration(2500);
         animation.cancel();
+    }
 
+    public Scene scSplashAboutOne, scSplashAboutTwo = null;
 
+    public void setupTransitions() {
+        ViewGroup root = findViewById(R.id.sc_result_root);
+
+        // Cria os objetos do tipo Scene
+        scSplashAboutOne = Scene.getSceneForLayout(root, R.layout.result_about_one, this);
+        scSplashAboutTwo = Scene.getSceneForLayout(root, R.layout.result_about_two, this);
     }
 }

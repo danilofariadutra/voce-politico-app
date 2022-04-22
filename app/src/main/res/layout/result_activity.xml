@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sc_result_root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_about_result"
+        android:onClick="result_to_about_one"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:backgroundTint="@color/dark_1"
+        android:text="Mais informações"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:background="@drawable/radius_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_value_textview"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/result_title_textview"
@@ -22,14 +43,14 @@
     <ProgressBar
         android:id="@+id/economic_progressbar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="195dp"
+        android:layout_width="200dp"
         android:layout_height="18dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="56dp"
         android:progress="0"
         android:progressDrawable="@drawable/economic_bar"
         android:scaleY="3"
-        app:layout_constraintStart_toEndOf="@+id/equality_image"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/result_title_textview" />
 
     <ProgressBar
@@ -81,11 +102,11 @@
         android:id="@+id/equality_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="41dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result_title_textview"
-        app:srcCompat="@drawable/ic_equality" />
+        app:srcCompat="@drawable/ic_socialista" />
 
     <ImageView
         android:id="@+id/nation_image"
@@ -95,7 +116,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/equality_image"
-        app:srcCompat="@drawable/ic_nation" />
+        app:srcCompat="@drawable/ic_nacionalista" />
 
     <ImageView
         android:id="@+id/liberty_image"
@@ -105,7 +126,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nation_image"
-        app:srcCompat="@drawable/ic_liberty" />
+        app:srcCompat="@drawable/ic_liberatarios" />
 
     <ImageView
         android:id="@+id/tradition_image"
@@ -115,7 +136,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/liberty_image"
-        app:srcCompat="@drawable/ic_tradition" />
+        app:srcCompat="@drawable/ic_conservador" />
 
     <ImageView
         android:id="@+id/markets_image"
@@ -125,7 +146,7 @@
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result_title_textview"
-        app:srcCompat="@drawable/ic_markets" />
+        app:srcCompat="@drawable/ic_liberal" />
 
     <ImageView
         android:id="@+id/globe_image"
@@ -135,7 +156,7 @@
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/markets_image"
-        app:srcCompat="@drawable/ic_globe" />
+        app:srcCompat="@drawable/ic_globalista" />
 
     <ImageView
         android:id="@+id/authority_image"
@@ -145,7 +166,7 @@
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/globe_image"
-        app:srcCompat="@drawable/ic_authority" />
+        app:srcCompat="@drawable/ic_autoritarismo" />
 
     <ImageView
         android:id="@+id/progress_image"
@@ -155,7 +176,7 @@
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/authority_image"
-        app:srcCompat="@drawable/ic_progress" />
+        app:srcCompat="@drawable/ic_progressista" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -217,7 +238,7 @@
         android:id="@+id/economic_axis_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Eixo Econômico:"
         android:textColor="@color/black"
@@ -231,7 +252,7 @@
         android:id="@+id/economic_axis_value_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Value"
         android:textColor="@color/black"
@@ -245,7 +266,7 @@
         android:id="@+id/diplomatic_axis_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Eixo Diplomático:"
         android:textColor="@color/black"
@@ -258,7 +279,7 @@
         android:id="@+id/diplomatic_axis_value_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Value"
         android:textColor="@color/black"
@@ -272,7 +293,7 @@
         android:id="@+id/civil_axis_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Eixo Civil:"
         android:textColor="@color/black"
@@ -285,7 +306,7 @@
         android:id="@+id/civil_axis_value_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Value"
         android:textColor="@color/black"
@@ -299,7 +320,7 @@
         android:id="@+id/societal_axis_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Eixo Social:"
         android:textColor="@color/black"
@@ -312,7 +333,7 @@
         android:id="@+id/societal_axis_value_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Value"
         android:textColor="@color/black"

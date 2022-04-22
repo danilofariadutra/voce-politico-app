@@ -23,6 +23,12 @@ public class MainActivity extends MainController {
         initFirstTransition();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     public void splash_01_to_splash_screen_02 (View view) {
         Transition slide = new Slide(Gravity.LEFT);
         slide.setDuration(1750);

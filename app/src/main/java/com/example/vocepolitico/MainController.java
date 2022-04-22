@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainController extends AppCompatActivity {
-
     public static Scene scSplashScreen01, scSplashScreen02, scSplashScreen03, scMainActivity, scQuestionExplanation = null;
 
     public void setupAll() {
