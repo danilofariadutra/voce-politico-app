@@ -252,7 +252,7 @@ public class QuestionResultController extends AppCompatActivity {
         animation.cancel();
     }
 
-    public Scene scSplashAboutOne, scSplashAboutTwo = null;
+    public Scene scSplashAboutOne, scSplashAboutTwo, scSplashAboutToMenu = null;
 
     public void setupTransitions() {
         ViewGroup root = findViewById(R.id.sc_result_root);
@@ -260,5 +260,6 @@ public class QuestionResultController extends AppCompatActivity {
         // Cria os objetos do tipo Scene
         scSplashAboutOne = Scene.getSceneForLayout(root, R.layout.result_about_one, this);
         scSplashAboutTwo = Scene.getSceneForLayout(root, R.layout.result_about_two, this);
+        scSplashAboutToMenu = Scene.getSceneForLayout(root, R.layout.menu_activity, this);
     }
 }

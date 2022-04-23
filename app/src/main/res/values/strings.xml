@@ -11,4 +11,9 @@
     <string name="about_conservatism">Aqueles com uma pontuação maior como Conservador acreditam em valores conservadores e aderência mais estrita a um código moral. Embora nem sempre, usualmente são religiosos, e apoiam o status quo vigente.</string>
     <string name="about_lilism"></string>
     <string name="about_progressivism">Aqueles com uma pontuação maior como Progressista acreditam em avanços sociais. Embora nem sempre, usualmente são seculares ou agnósticos, e apoiam ações ambientais e grandes investimentos em pesquisa científica ou tecnológica.</string>
+
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

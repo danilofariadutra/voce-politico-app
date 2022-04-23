@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/btn_about_result"
-        android:onClick="result_to_about_one"
+        android:onClick="resultToAboutOne"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"

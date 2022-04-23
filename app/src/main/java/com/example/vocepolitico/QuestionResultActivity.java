@@ -54,7 +54,7 @@ public class QuestionResultActivity extends QuestionResultController {
         imgvGlobalism.setVisibility(View.INVISIBLE);
     }
 
-    public void result_to_about_one(View view) {
+    public void resultToAboutOne(View view) {
         clearPreviouslyAnimation();
         Transition slide = new Fade();
         slide.setDuration(1300);
@@ -62,11 +62,19 @@ public class QuestionResultActivity extends QuestionResultController {
         TransitionManager.go(scSplashAboutOne, slide);
     }
 
-    public void result_to_about_two(View view) {
+    public void resultToAboutTwo(View view) {
         clearPreviouslyAnimation();
         Transition slide = new Fade();
         slide.setDuration(1300);
 
         TransitionManager.go(scSplashAboutTwo, slide);
+    }
+
+    public void aboutTwoToMenuActivity(View view) {
+        clearPreviouslyAnimation();
+        Transition slide = new Fade();
+        slide.setDuration(1300);
+
+        TransitionManager.go(scSplashAboutToMenu, slide);
     }
 }
