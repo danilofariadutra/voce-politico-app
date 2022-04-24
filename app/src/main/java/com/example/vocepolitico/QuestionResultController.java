@@ -1,10 +1,16 @@
 package com.example.vocepolitico;
 
+import android.content.Intent;
+import android.transition.Fade;
 import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.AnticipateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -260,6 +266,16 @@ public class QuestionResultController extends AppCompatActivity {
         // Cria os objetos do tipo Scene
         scSplashAboutOne = Scene.getSceneForLayout(root, R.layout.result_about_one, this);
         scSplashAboutTwo = Scene.getSceneForLayout(root, R.layout.result_about_two, this);
-        scSplashAboutToMenu = Scene.getSceneForLayout(root, R.layout.menu_activity, this);
+        scSplashAboutToMenu = Scene.getSceneForLayout(root, R.layout.activity_main, this);
+    }
+
+    public void goToMenu(View view) {
+        Transition transition;
+        transition = new Fade();
+        transition.setDuration(2000);
+        transition.setInterpolator(new AnticipateInterpolator());
+        TransitionManager.go(scSplashAboutToMenu, transition);
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 }

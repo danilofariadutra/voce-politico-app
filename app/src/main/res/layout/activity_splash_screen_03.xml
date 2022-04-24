@@ -57,7 +57,7 @@
         android:layout_height="23dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_button_right"
-        android:onClick="splash_screen_03_to_main"
+        android:onClick="splashScreen03ToExplanation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
