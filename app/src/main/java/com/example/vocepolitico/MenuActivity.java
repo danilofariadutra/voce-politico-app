@@ -24,13 +24,6 @@ public class MenuActivity extends AppCompatActivity {
     public androidx.appcompat.widget.Toolbar myToolbar;
     public int ANIMATION_TIME = 1500;
 
-    private View animateButton(View button, Integer duration) {
-        animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.blink);
-        animation.setDuration(duration);
-        button.startAnimation(animation);
-
-        return button;
-    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +56,7 @@ public class MenuActivity extends AppCompatActivity {
                         }, 1000);
 
                         break;
+
                     case R.id.navigation_dashboard:
 //                        Toast.makeText(MenuActivity.this, "Dashboard", Toast.LENGTH_SHORT).show();
 //                        DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -87,6 +81,7 @@ public class MenuActivity extends AppCompatActivity {
                             }
                         }, 1000);
                         break;
+
                     case R.id.navigation_notifications:
                         toast = Toast.makeText(MenuActivity.this, "Notifications", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 600);
@@ -109,6 +104,14 @@ public class MenuActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private View animateButton(View button, Integer duration) {
+        animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.blink);
+        animation.setDuration(duration);
+        button.startAnimation(animation);
+
+        return button;
     }
 
     private void openFragment(Fragment fragment) {
