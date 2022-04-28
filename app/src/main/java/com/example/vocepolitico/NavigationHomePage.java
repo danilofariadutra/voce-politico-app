@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -63,9 +62,6 @@ public class NavigationHomePage extends Fragment {
 
         arrayList = new ArrayList<>();
         arrayList.addAll(Arrays.asList(R.id.link_01, R.id.link_02, R.id.link_03, R.id.link_04, R.id.link_05, R.id.link_06, R.id.link_07));
-
-        Toast.makeText(getContext(), "Links Text View: " + String.valueOf(linksTextViewList.length), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(), "Array List: " + String.valueOf(arrayList.size()), Toast.LENGTH_SHORT).show();
 
         for(int itemPos = 0; itemPos < linksTextViewList.length; itemPos ++) {
             int finalItemPos = itemPos;
