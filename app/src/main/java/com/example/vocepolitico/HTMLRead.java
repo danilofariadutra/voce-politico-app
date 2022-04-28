@@ -7,19 +7,16 @@ import android.webkit.WebView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HTMLRead extends AppCompatActivity {
-
-    WebView webView;
-
-//    public String fileName = "myfile.html";
+    public static WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.html_read);
-        // init webView
-        webView = (WebView) findViewById(R.id.simpleWebView);
-        // displaying content in WebView from html file that stored in assets folder
-        String url = "https://www.politize.com.br/mandato-dos-politicos/";
+        setContentView(R.layout.navigation_ranking);
+
+        webView = findViewById(R.id.politic_rank_webview);
+
+        String url = "https://www.politicos.org.br";
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
     }
