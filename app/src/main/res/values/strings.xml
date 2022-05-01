@@ -1,3 +1,27 @@
 <resources>
+
+    <!-- Buttons Titles -->
     <string name="app_name">Voce Politico</string>
+    <string name="textview">TextView</string>
+    <string name="question_page_next_question">Próxima questão</string>
+
+    <!-- About 8 values Texts -->
+    <string name="about_socialism">Aqueles com uma pontuação maior como Socialista acreditam que a economia deve ser distribuida de forma igualitária e para a população. Estes tendem a apoiar leis tributárias progressivas, programas sociais, e no geral, socialismo.</string>
+    <string name="about_liberalism">Aqueles com uma pontuação maior como Liberal acreditam que a economia deve focar em crescimento rápido. Estes tendem a apoiar impostos mais baixos, privatização, desregulamentação, e no geral, capitalismo laissez-faire (liberalismo).</string>
+    <string name="about_nacionalism">Aqueles com uma pontuação maior como Nacionalista tendem a ser nacionalistas. Estes geralmente acreditam numa política externa agressiva, valorizando as forças armadas, a soberania nacional, e se preciso, o uso da força militar.</string>
+    <string name="about_globalism">Aqueles com uma pontuação maior como Globalista tendem a ser cosmopolitas. Estes geralmente acreditam numa política externa pacífica, enfatizando diplomacia, cooperação, integração, e no geral, uma unidade global de interesse mútuo.</string>
+    <string name="about_libertarianism">Aqueles com uma pontuação maior como Libertários acreditam em forte liberdade civil. Estes tendem a apoiar democracia e opor-se à intervenção do Estado nas vidas pessoais. Note que isto se refere a liberdades civis, não a liberdades econômicas.</string>
+    <string name="about_authoristarism">Aqueles com uma pontuação maior em Autoritarismo acreditam em forte poder do Estado. Estes tendem a apoiar a intervenção do Estado nas vidas pessoais, fiscalização governamental, e se preciso, censura ou autocracia.</string>
+    <string name="about_conservatism">Aqueles com uma pontuação maior como Conservador acreditam em valores conservadores e aderência mais estrita a um código moral. Embora nem sempre, usualmente são religiosos, e apoiam o status quo vigente.</string>
+    <string name="about_lilism"></string>
+    <string name="about_progressivism">Aqueles com uma pontuação maior como Progressista acreditam em avanços sociais. Embora nem sempre, usualmente são seculares ou agnósticos, e apoiam ações ambientais e grandes investimentos em pesquisa científica ou tecnológica.</string>
+
+    <!-- MenuActivity Titles-->
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- Example Texts -->
+    <string name="example_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel leo pulvinar, cursus velit sed, pulvinar purus. Nunc vitae posuere nunc. Integer non velit varius, commodo nisi vel, accumsan elit. Nulla ac risus nisi. Suspendisse nulla lorem, sollicitudin vel laoreet tincidunt, fringilla porta nulla. Donec eget interdum nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam nec rhoncus quam, vel vestibulum magna. Ut porta mattis consequat. Morbi eu efficitur nunc, sed lacinia purus. Nulla nibh quam, fringilla eget hendrerit in, tincidunt eget nunc. Proin aliquet nisi quis arcu sollicitudin, eu vestibulum orci consectetur. Aliquam elit orci, varius ac fringilla sed, viverra non neque. Nullam consectetur ligula vulputate risus gravida, sit amet tristique purus vehicula. Nulla ac elementum lectus.</string>
+
 </resources>

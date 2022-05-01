@@ -1,0 +1,187 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    android:scrollbarStyle="insideInset">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="128dp" />
+
+        <TextView
+            android:id="@+id/guia_politico_textview"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="Guia Político"
+            android:textAlignment="center"
+            android:textColor="@color/dark_1"
+            android:textSize="26dp" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:src="@drawable/ic_doubt_05" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+            <TextView
+                android:id="@+id/link_01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:maxLines="100"
+                android:paddingHorizontal="10dp"
+                android:scrollHorizontally="false"
+                android:text="Eleições para presidente o guia fácil das eleições gerais!"
+                android:textAlignment="center"
+                android:textColor="@color/dark_1"
+                android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/link_02"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:maxLines="100"
+                android:paddingHorizontal="10dp"
+                android:scrollHorizontally="false"
+                android:text="Eleições para presidente o guia fácil das eleições gerais!"
+                android:textAlignment="center"
+                android:textColor="@color/dark_1"
+                android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/link_03"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:maxLines="100"
+                android:paddingHorizontal="10dp"
+                android:scrollHorizontally="false"
+                android:text="Eleições para presidente o guia fácil das eleições gerais!"
+                android:textAlignment="center"
+                android:textColor="@color/dark_1"
+                android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/link_04"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:maxLines="100"
+                android:paddingHorizontal="10dp"
+                android:scrollHorizontally="false"
+                android:text="Eleições para presidente o guia fácil das eleições gerais!"
+                android:textAlignment="center"
+                android:textColor="@color/dark_1"
+                android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/link_05"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:maxLines="100"
+                android:paddingHorizontal="10dp"
+                android:scrollHorizontally="false"
+                android:text="Eleições para presidente o guia fácil das eleições gerais!"
+                android:textAlignment="center"
+                android:textColor="@color/dark_1"
+                android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+
+
+
+        <TextView
+            android:id="@+id/link_06"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ellipsize="none"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:maxLines="100"
+            android:paddingHorizontal="10dp"
+            android:scrollHorizontally="false"
+            android:text="Eleições para presidente o guia fácil das eleições gerais!"
+            android:textAlignment="center"
+            android:textColor="@color/dark_1"
+            android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/link_07"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ellipsize="none"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:maxLines="100"
+            android:paddingHorizontal="10dp"
+            android:scrollHorizontally="false"
+            android:text="Eleições para presidente o guia fácil das eleições gerais!"
+            android:textAlignment="center"
+            android:textColor="@color/dark_1"
+            android:textSize="20dp" />
+    </TableLayout>
+
+</ScrollView>

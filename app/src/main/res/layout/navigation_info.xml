@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_info"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_restart_test"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:backgroundTint="@color/dark_1"
+        android:onClick="resultToAboutOne"
+        android:text="Reiniciar Teste"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:background="@drawable/radius_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_value_textview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/result_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Seu resultado"
+        android:textColor="@color/black"
+        android:textSize="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/navigation_economic_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="200dp"
+        android:layout_height="18dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="56dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/economic_bar"
+        android:scaleY="3"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/result_title_textview" />
+
+    <ProgressBar
+        android:id="@+id/navigation_diplomatic_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="195dp"
+        android:layout_height="18dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="60dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/diplomatic_bar"
+        android:scaleY="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_economic_progressbar" />
+
+    <ProgressBar
+        android:id="@+id/navigation_civil_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="195dp"
+        android:layout_height="18dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="60dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/civil_bar"
+        android:scaleY="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_diplomatic_progressbar" />
+
+    <ProgressBar
+        android:id="@+id/navigation_societal_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="195dp"
+        android:layout_height="18dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="60dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/societal_bar"
+        android:scaleY="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_civil_progressbar" />
+
+    <ImageView
+        android:id="@+id/equality_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_title_textview"
+        app:srcCompat="@drawable/ic_socialista" />
+
+    <ImageView
+        android:id="@+id/nation_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/equality_image"
+        app:srcCompat="@drawable/ic_nacionalista" />
+
+    <ImageView
+        android:id="@+id/liberty_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nation_image"
+        app:srcCompat="@drawable/ic_liberatarios" />
+
+    <ImageView
+        android:id="@+id/tradition_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/liberty_image"
+        app:srcCompat="@drawable/ic_conservador" />
+
+    <ImageView
+        android:id="@+id/markets_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_title_textview"
+        app:srcCompat="@drawable/ic_liberal" />
+
+    <ImageView
+        android:id="@+id/globe_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/markets_image"
+        app:srcCompat="@drawable/ic_globalista" />
+
+    <ImageView
+        android:id="@+id/authority_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/globe_image"
+        app:srcCompat="@drawable/ic_autoritarismo" />
+
+    <ImageView
+        android:id="@+id/progress_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authority_image"
+        app:srcCompat="@drawable/ic_progressista" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="375dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="113dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="110dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="305dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="191dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="347dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="269dp" />
+
+    <TextView
+        android:id="@+id/economic_axis_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Eixo Econômico:"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_economic_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/equality_image"
+        app:layout_constraintTop_toBottomOf="@+id/result_title_textview"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/navigation_economic_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_economic_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/economic_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/result_title_textview"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/diplomatic_axis_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Eixo Diplomático:"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_diplomatic_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/nation_image"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_economic_progressbar" />
+
+    <TextView
+        android:id="@+id/navigation_diplomatic_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_diplomatic_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/diplomatic_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_economic_progressbar"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <TextView
+        android:id="@+id/civil_axis_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Eixo Civil:"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_civil_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/liberty_image"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_diplomatic_progressbar" />
+
+    <TextView
+        android:id="@+id/navigation_civil_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_civil_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/civil_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_diplomatic_progressbar"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <TextView
+        android:id="@+id/societal_axis_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Eixo Social:"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_societal_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/tradition_image"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_civil_progressbar" />
+
+    <TextView
+        android:id="@+id/navigation_societal_axis_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Value"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_societal_progressbar"
+        app:layout_constraintStart_toEndOf="@+id/societal_axis_textview"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_civil_progressbar"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <TextView
+        android:id="@+id/result_subtitle_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="O seu resultado aproximado:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_societal_progressbar" />
+
+    <TextView
+        android:id="@+id/navigation_value_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Ideologia"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_subtitle_textview" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="120dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="211dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="103dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="179dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="257dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="335dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
