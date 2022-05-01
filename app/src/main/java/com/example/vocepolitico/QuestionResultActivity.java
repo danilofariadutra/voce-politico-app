@@ -10,6 +10,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import static com.example.vocepolitico.MainActivity.testIsDone;
+
 public class QuestionResultActivity extends QuestionResultController {
 
     @Override
@@ -17,9 +19,10 @@ public class QuestionResultActivity extends QuestionResultController {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_activity);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+        configSharedPreferences();
         setupTransitions();
         setupItems();
-
+        getSharedPreferencesValues();
         resultTextAnimation();
     }
 
@@ -60,6 +63,7 @@ public class QuestionResultActivity extends QuestionResultController {
         slide.setDuration(1300);
 
         TransitionManager.go(scSplashAboutOne, slide);
+        testIsDone = true;
     }
 
     public void resultToAboutTwo(View view) {

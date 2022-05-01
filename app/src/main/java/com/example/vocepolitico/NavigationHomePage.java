@@ -18,8 +18,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//import static com.example.vocepolitico.QuestionResultController.string;
+
 public class NavigationHomePage extends Fragment {
-    public static TextView[] linksTextViewList;
+//    public static TextView[] linksTextViewList;
     public static ArrayList<Integer> arrayList;
     public static TextView link1, link2, link3, link4, link5, link6, link7;
     public String url;
@@ -30,57 +32,8 @@ public class NavigationHomePage extends Fragment {
         View view = inflater.inflate(R.layout.navigation_home, container, false);
 
         setupItems(view);
-//
-//        link1 = view.findViewById(R.id.link_01);
-//
-//        link1.setText(readJSONFile(R.raw.url_title).get(0));
 
-//        link1.setClickable(true);
-//
-//        link1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                  String url =  readJSONFile(R.raw.url_string).get(0);
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(url));
-//                startActivity(intent);
-//                Toast.makeText(view.getContext(), url, Toast.LENGTH_SHORT).show();
-//            }
-//        });
         return view;
-    }
-
-    public void setupItems(View view) {
-        linksTextViewList = new TextView[7];
-        linksTextViewList[0] = link1;
-        linksTextViewList[1] = link2;
-        linksTextViewList[2] = link3;
-        linksTextViewList[3] = link4;
-        linksTextViewList[4] = link5;
-        linksTextViewList[5] = link6;
-        linksTextViewList[6] = link7;
-
-        arrayList = new ArrayList<>();
-        arrayList.addAll(Arrays.asList(R.id.link_01, R.id.link_02, R.id.link_03, R.id.link_04, R.id.link_05, R.id.link_06, R.id.link_07));
-
-        for(int itemPos = 0; itemPos < linksTextViewList.length; itemPos ++) {
-            int finalItemPos = itemPos;
-            linksTextViewList[itemPos] = view.findViewById(arrayList.get(itemPos));
-            linksTextViewList[itemPos].setText(readJSONFile(R.raw.url_title).get(itemPos));
-
-            linksTextViewList[itemPos].setClickable(true);
-
-            linksTextViewList[itemPos].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    url = readJSONFile(R.raw.url_string).get(finalItemPos);
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(url));
-                    startActivity(intent);
-                }
-            });
-        }
     }
 
     public static NavigationHomePage newInstance() {
@@ -114,5 +67,32 @@ public class NavigationHomePage extends Fragment {
             }
         }
         return questions_list;
+    }
+
+    public void setupItems(View view) {
+        TextView[] linksTextViewList = new TextView[7];
+        linksTextViewList = new TextView[]{link1, link2, link3, link4, link5, link6, link7};
+
+        arrayList = new ArrayList<>();
+        arrayList.addAll(Arrays.asList(R.id.link_01, R.id.link_02, R.id.link_03, R.id.link_04, R.id.link_05, R.id.link_06, R.id.link_07));
+
+        for(int itemPos = 0; itemPos < linksTextViewList.length; itemPos ++) {
+            int finalItemPos = itemPos;
+            linksTextViewList[itemPos] = view.findViewById(arrayList.get(itemPos));
+            linksTextViewList[itemPos].setText(readJSONFile(R.raw.url_title).get(itemPos));
+
+            linksTextViewList[itemPos].setClickable(true);
+
+            linksTextViewList[itemPos].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    url = readJSONFile(R.raw.url_string).get(finalItemPos);
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                }
+            });
+        }
     }
 }

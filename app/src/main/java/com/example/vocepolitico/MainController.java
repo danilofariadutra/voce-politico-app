@@ -2,15 +2,15 @@ package com.example.vocepolitico;
 
 import android.transition.Scene;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainController extends AppCompatActivity {
     public static Scene scSplashScreen01, scSplashScreen02, scSplashScreen03, scMainActivity, scQuestionExplanation = null;
-    public ImageButton btnScSplash01;
-    public ImageButton btnScSplash02;
-    public ImageButton btnScSplash03;
+    public Button btnScSplash01;
+    public Button btnScSplash02;
+    public Button btnScSplash03;
 
     public void setupAll() {
         setupTransitions();

@@ -14,13 +14,20 @@ import android.view.animation.AnticipateInterpolator;
 import static com.example.vocepolitico.R.layout.activity_splash_screen_01;
 
 public class MainActivity extends MainController {
+    public static boolean testIsDone = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_splash_screen_01);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-        setupAll();
-        initFirstTransition();
+        if (!testIsDone) {
+            setContentView(activity_splash_screen_01);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+            setupAll();
+            initFirstTransition();
+        } else {
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

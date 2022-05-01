@@ -1,6 +1,7 @@
 package com.example.vocepolitico;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.transition.Fade;
 import android.transition.Scene;
 import android.transition.Transition;
@@ -76,13 +77,34 @@ public class QuestionResultController extends AppCompatActivity {
     public static Integer ideologiesGovtStats;
     public static Integer ideologiesSctyStats;
 
-
     public static List<String> econArray = Arrays.asList("Comunista", "Socialista", "Social-Democrata", "Centrista", "Liberal", "Capitalista", "Laissez-Faire");
     public static List<String> diplArray =  Arrays.asList("Cosmopolitano", "Internationalista", "Pacifista", "Moderado", "Patriota", "Nationalista", "Extremista");
     public static List<String> govtArray = Arrays.asList("Anarquista", "Libertário", "Liberal", "Moderado", "Estatista", "Autoritário", "Totalitário");
     public static List<String> sctyArray = Arrays.asList("Revolucionário", "Progressista Extremo", "Progressista", "Neutro", "Conservador", "Conservador Extremo", "Reacionário");
 
-//    public static List<List> items = Arrays.asList(econArray, diplArray, govtArray, sctyArray);
+    public static SharedPreferences shprefIdeology,
+                                    shprefEconStats,
+                                    shprefDiplStats,
+                                    shprefGovtStats,
+                                    shprefSctyStats;
+
+    public static SharedPreferences shprefEconBarValue,
+                                    shprefDiplBarValue,
+                                    shprefGovtBarValue,
+                                    shprefSctyBarValue;
+
+    public static SharedPreferences.Editor editor;
+
+    public static String strShPrefIdeology,
+                         strShPrefEconStats,
+                         strShPrefDiplStats,
+                         strShPrefGovtStats,
+                         strShPrefSctyStats;
+
+    public static String strShPrefIEconBarValue,
+                         strShPrefDiplBarValue,
+                         strShPrefGovtBarValue,
+                         strShPrefSctyBarValue;
 
     public void setupItems() {
         tvResult = findViewById(R.id.result_title_textview);
@@ -153,6 +175,8 @@ public class QuestionResultController extends AppCompatActivity {
             ideologiesDiplStats = Integer.parseInt(QuestionsPageActivity.getStatValuesFromEffect(ideologiesStats,DIPL));
             ideologiesGovtStats = Integer.parseInt(QuestionsPageActivity.getStatValuesFromEffect(ideologiesStats,GOVT));
             ideologiesSctyStats = Integer.parseInt(QuestionsPageActivity.getStatValuesFromEffect(ideologiesStats,SCTY));
+            // SHARED PREFERENCES AQUI Para os valores dos Eixos:
+
 
             Log.i("Stats", String.valueOf(ideologiesEconStats) + String.valueOf(ideologiesDiplStats) + String.valueOf(ideologiesGovtStats) + String.valueOf(ideologiesSctyStats));
             dist = 0f;
@@ -169,7 +193,45 @@ public class QuestionResultController extends AppCompatActivity {
                 Log.i("ideodist", String.valueOf(ideodist));
             }
         }
+
         return ideology;
+    }
+
+
+    public void getSharedPreferencesValues() {
+        strShPrefIdeology = recordShardPreferencesValues(calculateStandartIdeology(), shprefIdeology, editor);
+        strShPrefEconStats = recordShardPreferencesValues(calculateStatsIdeology(Math.round(economicBarValue), econArray), shprefEconStats, editor);
+        strShPrefDiplStats = recordShardPreferencesValues(calculateStatsIdeology(Math.round(diplomaticBarValue), diplArray), shprefEconStats, editor);
+        strShPrefGovtStats = recordShardPreferencesValues(calculateStatsIdeology(Math.round(civilBarValue), govtArray), shprefEconStats, editor);
+        strShPrefSctyStats = recordShardPreferencesValues(calculateStatsIdeology(Math.round(societalBarValue), sctyArray), shprefEconStats, editor);
+
+        strShPrefIEconBarValue = recordShardPreferencesValues(String.valueOf(calculateResultsFromUserChoice(econScore, maxEcon)), shprefEconBarValue, editor);
+        strShPrefDiplBarValue = recordShardPreferencesValues(String.valueOf(calculateResultsFromUserChoice(diplScore, maxDipl)), shprefDiplBarValue, editor);
+        strShPrefGovtBarValue = recordShardPreferencesValues(String.valueOf(calculateResultsFromUserChoice(govtScore, maxGovt)), shprefGovtBarValue, editor);
+        strShPrefSctyBarValue = recordShardPreferencesValues(String.valueOf(calculateResultsFromUserChoice(sctyScore, maxScty)), shprefSctyBarValue, editor);
+    }
+
+    public void configSharedPreferences() {
+        shprefIdeology = getSharedPreferences("VALUES", MODE_PRIVATE);
+
+        shprefEconStats = getSharedPreferences("VALUES", MODE_PRIVATE);
+        shprefDiplStats = getSharedPreferences("VALUES", MODE_PRIVATE);
+        shprefGovtStats = getSharedPreferences("VALUES", MODE_PRIVATE);
+        shprefSctyStats = getSharedPreferences("VALUES", MODE_PRIVATE);
+
+        shprefEconBarValue = getSharedPreferences("VALUES", MODE_PRIVATE);
+        shprefDiplBarValue = getSharedPreferences("VALUES", MODE_PRIVATE);
+        shprefGovtBarValue = getSharedPreferences("VALUES", MODE_PRIVATE);
+        shprefSctyBarValue = getSharedPreferences("VALUES", MODE_PRIVATE);
+    }
+
+    public String recordShardPreferencesValues(String value, SharedPreferences shpref, SharedPreferences.Editor editorPref) {
+        String str = value;
+        editorPref = shpref.edit();
+        editorPref.putString("textsaved", str);
+        editorPref.commit();
+
+        return str;
     }
 
     public void testPrintList(List<List> listOfList) {
@@ -185,6 +247,8 @@ public class QuestionResultController extends AppCompatActivity {
         diplomaticBarValue = calculateResultsFromUserChoice(diplScore, maxDipl);
         civilBarValue = calculateResultsFromUserChoice(govtScore, maxGovt);
         societalBarValue = calculateResultsFromUserChoice(sctyScore, maxScty);
+        // SHARED PREFERENCES AQUI Para os valores dos Eixos:
+
         Log.i("Bar Values", String.valueOf(economicBarValue) + " | " + String.valueOf(diplomaticBarValue) + " | " + String.valueOf(civilBarValue) + " | " + String.valueOf(societalBarValue) + " | ");
 
         economicProgressBar = findViewById(R.id.economic_progressbar);
@@ -197,10 +261,12 @@ public class QuestionResultController extends AppCompatActivity {
 
         civilProgressBar = findViewById(R.id.civil_progressbar);
         civilProgressBar.setProgress(Math.round(civilBarValue));
+        // SHARED PREFERENCES AQUI
         Log.i("Civil Bar Value", String.valueOf(Math.round(civilBarValue)));
 
         societalProgressBar = findViewById(R.id.societal_progressbar);
         societalProgressBar.setProgress(Math.round(societalBarValue));
+        // SHARED PREFERENCES AQUI
         Log.i("Societal Bar Value", String.valueOf(Math.round(societalBarValue)));
 
 //        Timer timer = new Timer();
