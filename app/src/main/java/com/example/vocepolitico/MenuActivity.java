@@ -28,11 +28,6 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_activity);
 
-        String stringURL = "https://www.politize.com.br/mandato-dos-politicos/";
-        String stringURL2 = "https://www.politize.com.br/eleicoes-para-presidente-2/?doing_wp_cron=1650928608.8153030872344970703125";
-        String stringURL3 = "https://www.politize.com.br/eleicoes-para-presidente-2/?doing_wp_cron=1650928608.8153030872344970703125";
-
-
         myToolbar = findViewById(R.id.nav_view);
         fragment = NavigationHomePage.newInstance();
         openFragment(fragment);
